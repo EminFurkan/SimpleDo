@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700;900&display=swap');
 
 //General Settings
 html {
@@ -37,13 +37,34 @@ $generic-bg: #1da1f2;
   user-select: none;
 }
 
-@mixin box-overlay(){
-  box-shadow: $generic-box-shadow;
-  position: absolute;
-  width: 100%;
-  z-index: 1;
-  top: 85px;
-  border-radius: 3px;
+@mixin cancel() {
+  color: #555;
+  cursor: pointer;
+  font-size: 14px;
+  margin: .5rem;
+}
+
+@mixin button() {
+  width: 3.5rem;
+  height: 2rem;
+  border: none;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 5px;
+  background-color: $generic-bg;
+  color: #fff !important;
+  text-decoration: none !important;
+  letter-spacing: .5px;
+  white-space: nowrap;
+  cursor: pointer;
+  outline: none;
+}
+
+@mixin cancel() {
+  color: #555;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 2px 5px;
 }
 
 @mixin mq($from) {
@@ -82,7 +103,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 90%;
+    max-width: 94.2%;
     margin: auto;
     height: 3rem;
 
@@ -160,12 +181,14 @@ header {
 //Sidebar
 .sidebar {
   @include no-select();
-  width: 23%;
+  width: 22rem;
+  margin-left: 2.5rem;
   height: calc(100vh);
-  padding-top: 6%;
+  padding-top: 5%;
   border-right: $generic-border;
   overflow-x: hidden;
   overflow-y: hidden;
+  transition: .3s ease-out;
 
   @include mq('900px') {
     display: none;
@@ -176,6 +199,7 @@ header {
     li {
       list-style-type: none;
       color: #333;
+      font-weight: 300;
       cursor: pointer;
       line-height: 1.5;
       font-size: 15px;
@@ -212,7 +236,7 @@ header {
   }
 
   &__middle {
-    margin: 1.5rem 0;
+    margin: .5rem 0;
     display: flex;
     border-bottom: $generic-border;
     padding: .5rem;
@@ -231,28 +255,224 @@ header {
     h2 {
       font-size: 15px;
       font-weight: bold;
-      padding-bottom: 1rem;
       color: #333;
     }
   }
 
   &__projects {
-    padding-left: 1rem;
     list-style-type: none;
+    height: auto;
+    color: #333;
+  }
+  
+  &__project {
+    padding: .7rem;
+    font-weight: 300;
+    cursor: pointer;
+    height: 2.5rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    &.active {
+      background-color: white;
+      font-weight: bold;
+      .sidebar__project-delete{
+        display: flex;
+      }
+    }
+
+    &:hover {
+      background-color: white;
+    }
+
+    &:hover span:nth-child(3){
+      display: inline;
+    }
+
+    &:nth-child(1){
+      .sidebar__dot{
+        background-color: #f18c83;
+      }
+    }
+    &:nth-child(2){
+      .sidebar__dot{
+        background-color: #B8B8B8;
+      }
+    }
+    &:nth-child(3){
+      .sidebar__dot{
+        background-color: #96C3EB;
+      }
+    }
+    &:nth-child(4){
+      .sidebar__dot{
+        background-color: #6ACCBC;
+      }
+    }
+    &:nth-child(5){
+      .sidebar__dot{
+        background-color: #EB96EB;
+      }
+    }
+
+    &-delete {
+      margin-left: auto;
+      display: none;
+
+      svg {
+        color: #cacaca;
+      }
+    }
   }
 
-  &__project {
-    background-color: pink;
-    cursor: pointer;
+  &__dot {
+    width: .6rem;
+    height: .6rem;
+    display: inline-block;
+    border-radius: 1rem;
+    margin-right: 1.2rem;
+  }
+}
 
+//Show Delete Modal
+.project-delete-modal {
+  width: 20rem;
+  height: 10rem;
+  position: absolute;
+  line-height: 1.5;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);;
+  background-color: white;
+  top: 30%;
+  left: 40%;
+  border-radius: 5px;
+  padding: 2rem;
+
+  &__inner {
+    height: 100%;
+    width: 100%;
+    font-weight: 200;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+
+    .name {
+      font-weight: 700;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    height: 30%;
+
+    span {
+      margin: 0 .5rem;
+    }
   }
 }
 
 //Main Content
 .content {
-  display: grid;
-  align-items: flex-start;
-  grid-template-columns: 1fr auto;
-  max-width: 90%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  max-width: 100%;
   margin: auto;
+}
+
+.tasks {
+  width: 100%;
+  min-height: calc(100vh);
+  background-color: white;
+  border-right: $generic-border;
+  vertical-align: top;
+
+  @include mq('900px') {
+    margin-left: 0;
+    width: auto;
+  }
+}
+
+//Add Project
+.add-project {
+  width: 100%;
+  height: 20%;
+  padding: .5rem;
+
+  p {
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    color: #999;
+  }
+
+  p:hover {
+    color: #1d8ff2;
+  }
+
+  &__plus {
+    font-size: 25px;
+    font-weight: 100;
+    margin: 0 1.1rem 0 .1rem;
+    color: $generic-bg;
+    border-radius: 50%;
+    padding-bottom: .1rem;
+  }
+
+  &__submit {
+    @include button();
+  }
+
+  &__cancel {
+    @include cancel();
+  }
+
+  &__cancel:hover {
+    text-decoration: underline;
+  }
+
+  &__input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 90%;
+    background-color: #e5e5e5e5;
+    padding: 1rem 1rem .3rem 1rem;
+    border-radius: 5px;
+    margin: 1rem 0;
+
+    label {
+      font-size: 12px;
+      margin-bottom: .3rem;
+      color: #333;
+    }
+
+    input {
+      height: 1.5rem;
+      border: none;
+      border-radius: 3px;
+      padding-left: .2rem;
+      outline: none;
+      font-size: 13px;
+      width: 100%;
+      margin-bottom: .5rem;
+    }
+
+    input:focus {
+      border: 1px solid #1d8ff2;
+    }
+
+    &-actions {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin: .5rem 0;
+    }
+  }
 }
