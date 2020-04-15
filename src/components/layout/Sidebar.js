@@ -10,15 +10,20 @@ import { ProjectList } from '../ProjectList';
 import { AddProject } from '../AddProject';
 
 export const Sidebar = () => {
-  const { selectedProject } = useSelectedProjectValue;
-  const [active, setActive] = useState('INBOX');
-  const [showProjects, setShowProjects] = useState(true);
+  const { setSelectedProject } = useSelectedProjectValue();
+  const [active, setActive] = useState('inbox');
+  const [displayProjects, setDisplayProjects] = useState(true);
 
   return (
     <div className="sidebar">
       <ul className="sidebar__generic">
-        <li className="inbox">
-          <div>
+        <li className="inbox active">
+          <div
+            onClick={() => {
+              setActive('inbox');
+              setSelectedProject('INBOX');
+            }}
+          >
             <span>
               <FaInbox />
             </span>
@@ -26,7 +31,12 @@ export const Sidebar = () => {
           </div>
         </li>
         <li className="today">
-          <div>
+          <div
+            onClick={() => {
+              setActive('today');
+              setSelectedProject('TODAY');
+            }}
+          >
             <span>
               <FaRegCalendar />
             </span>
@@ -34,7 +44,12 @@ export const Sidebar = () => {
           </div>
         </li>
         <li className="next_7">
-          <div>
+          <div
+            onClick={() => {
+              setActive('next_7');
+              setSelectedProject('NEXT_7');
+            }}
+          >
             <span>
               <FaRegCalendarAlt />
             </span>
@@ -42,13 +57,18 @@ export const Sidebar = () => {
           </div>
         </li>
       </ul>
-      <div className="sidebar__middle">
+      <div 
+        className="sidebar__middle"
+        onClick={() => setDisplayProjects(!displayProjects)}
+      >
         <span>
-          <FaChevronDown />
+          <FaChevronDown
+            className={!displayProjects ? 'hide-projects' : undefined}
+           />
         </span>
         <h2>Projects</h2>
       </div>
-        { showProjects && <ProjectList /> }
+        { displayProjects && <ProjectList /> }
         { <AddProject /> }
     </div>
   )

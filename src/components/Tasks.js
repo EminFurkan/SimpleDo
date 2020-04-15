@@ -4,6 +4,7 @@ import { filteredTasks } from '../constants';
 import { Checkbox } from './Checkbox';
 import { getTitle, getFilteredTitle, filteredTasksExist } from '../utils';
 import { useSelectedProjectValue, useProjectsValue } from '../context';
+import { AddTask } from './AddTask';
 
 export const Tasks = () => {
   const { selectedProject } = useSelectedProjectValue();
@@ -13,7 +14,7 @@ export const Tasks = () => {
   let projectName = '';
 
   if (filteredTasksExist(selectedProject) && selectedProject) {
-    projectName = getFilteredTitle(filteredTasks, selectedProject).name;
+    projectName = getFilteredTitle(filteredTasks, selectedProject).value;
   }
 
   if (
@@ -22,7 +23,7 @@ export const Tasks = () => {
     selectedProject &&
     !filteredTasksExist(selectedProject)
   ) {
-    projectName = getTitle(projects, selectedProject);
+    projectName = getTitle(projects, selectedProject).name;
   }
 
   useEffect(() => {
@@ -39,6 +40,7 @@ export const Tasks = () => {
             <span>{ task.task }</span>
           </li>
         ))}
+        <AddTask />
       </ul>
     </div>
   )

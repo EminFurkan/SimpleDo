@@ -1,5 +1,6 @@
 import React from 'react';
 import { firebase } from '../firebase';
+import { IoMdCheckmark } from 'react-icons/io'
 
 export const Checkbox = ({ id }) => {
   const archiveTask = () => {
@@ -14,10 +15,12 @@ export const Checkbox = ({ id }) => {
 
   return (
     <div
-      className="checkbox-holder"
+      className="checkbox-container"
       onClick={() => archiveTask()}
     >
-      <span className="checkbox" />
+      <span className="checkbox">
+        <IoMdCheckmark />
+      </span>
     </div>
   )
 }

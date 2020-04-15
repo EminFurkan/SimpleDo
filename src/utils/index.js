@@ -1,16 +1,14 @@
 import { filteredTasks } from '../constants';
 
-export const getTitle = (projects, projectId) => {
+export const getTitle = (projects, projectId) => 
   projects.find(project => project.projectId === projectId);
-}
 
-export const getFilteredTitle = (projects, key) => {
+
+export const getFilteredTitle = (projects, key) => 
   projects.find(project => project.key === key);
-}
 
-export const filteredTasksExist = selectedProject => {
+export const filteredTasksExist = selectedProject =>
   filteredTasks.find(task => task.key === selectedProject);
-}
 
 export const generatePushId = (() => {
   const PUSH_CHARS =
