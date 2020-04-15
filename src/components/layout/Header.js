@@ -3,7 +3,12 @@ import { GiCycle } from 'react-icons/gi';
 import { GoPlus } from 'react-icons/go';
 import { FaBars } from 'react-icons/fa';
 
-export const Header = ({ displaySidebar, setDisplaySidebar }) => {
+export const Header = ({
+  displaySidebar,
+  setDisplaySidebar,
+  darkMode,
+  setDarkMode
+}) => {
   return (
     <header className="header">
       <nav>
@@ -22,7 +27,9 @@ export const Header = ({ displaySidebar, setDisplaySidebar }) => {
                 <GoPlus />
               </button>
             </li>
-            <li className="actions__darkmode">
+            <li className="actions__darkmode"
+              onClick={() => setDarkMode(!darkMode)}
+            >
               <button>
                 <GiCycle />
               </button>

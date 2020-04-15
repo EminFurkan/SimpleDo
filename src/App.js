@@ -5,14 +5,17 @@ import { ProjectsProvider, SelectedProjectProvider } from './context';
 
 export const App = () => {
   const [displaySidebar, setDisplaySidebar] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
 
   return (
   <SelectedProjectProvider>
     <ProjectsProvider>
-      <main>
+      <main className={ darkMode ? 'darkmode' : undefined }>
         <Header
         displaySidebar={displaySidebar}
         setDisplaySidebar={setDisplaySidebar}
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
         />
         <Content
           displaySidebar={displaySidebar}
