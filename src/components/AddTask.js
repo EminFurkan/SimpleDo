@@ -14,7 +14,7 @@ export const AddTask = () => {
     let filteredDate = '';
 
     if (projectId === 'TODAY'){
-      filteredDate = moment.format('DD/MM/YYYY');
+      filteredDate = moment().format('DD/MM/YYYY');
     } else if (projectId === 'NEXT_7'){
       filteredDate = moment()
         .add(7, 'days')
@@ -74,12 +74,14 @@ export const AddTask = () => {
           </div>
         </div>
       )}
-      <div
-        className="add-task__action"
-        onClick={() => setDisplayMainEditor(!displayMainEditor)}
-      >
-        <p><span className="add-task__plus">+</span> Add task</p>
-      </div>
+      {!displayMainEditor && (
+        <div
+          className="add-task__action"
+          onClick={() => setDisplayMainEditor(!displayMainEditor)}
+        >
+          <p><span className="add-task__plus">+</span> Add task</p>
+        </div>
+      )}
     </div>
   )
 }
