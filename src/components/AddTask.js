@@ -26,7 +26,7 @@ export const AddTask = () => {
         .firestore()
         .collection('tasks')
         .add({
-          archived: false,
+          isArchived: false,
           projectId,
           task,
           date: filteredDate,
@@ -47,6 +47,11 @@ export const AddTask = () => {
             onChange={e => setTask(e.target.value)}
             type="text"
             value={task}
+            onKeyDown={e => {
+              if (e.key === 'Enter'){
+                addNewTask();
+              }
+            }}
           />
           <div
             className="add-task__actions"
