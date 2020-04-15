@@ -9,13 +9,13 @@ import { useSelectedProjectValue } from '../../context';
 import { ProjectList } from '../ProjectList';
 import { AddProject } from '../AddProject';
 
-export const Sidebar = () => {
+export const Sidebar = ({ displaySidebar, setDisplaySidebar }) => {
   const { setSelectedProject } = useSelectedProjectValue();
   const [active, setActive] = useState('inbox');
   const [displayProjects, setDisplayProjects] = useState(true);
 
   return (
-    <div className="sidebar">
+    <div className={displaySidebar ? 'sidebar' : 'sidebar display-off'}>
       <ul className="sidebar__generic">
         <li className="inbox active">
           <div

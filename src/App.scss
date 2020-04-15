@@ -172,11 +172,21 @@ header {
   }
 }
 
+.display-off {
+  width: 0rem !important;
+  padding-left: 0 !important;
+  .sidebar__generic {
+    display: none;
+  }
+  .sidebar__project {
+    display: none;
+  }
+}
+
 //Sidebar
 .sidebar {
   @include no-select();
   width: 24rem;
-  // margin-left: 2.5rem;
   padding-left: 2.5rem;
   height: calc(100vh);
   padding-top: 5%;
@@ -188,6 +198,7 @@ header {
   @include mq('900px') {
     display: none;
   }
+
 
   &__generic {
 
@@ -440,7 +451,7 @@ header {
     flex-direction: column;
     justify-content: center;
     width: 90%;
-    background-color: #e5e5e5e5;
+    background-color: #e5e5e5;
     padding: 1rem 1rem .3rem 1rem;
     border-radius: 5px;
     margin: 1rem 0;
@@ -493,6 +504,8 @@ header {
   border-right: $generic-border;
   vertical-align: top;
   color: #333;
+  display: flex;
+  justify-content: center;
 
   @include mq('900px') {
     padding-top: 15%;
@@ -501,6 +514,10 @@ header {
   h2 {
     font-size: 20px;
     padding-top: .5rem;
+  }
+
+  &__container {
+    width: 60rem;
   }
 
   &__list {

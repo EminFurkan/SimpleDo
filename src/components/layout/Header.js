@@ -3,11 +3,14 @@ import { GiCycle } from 'react-icons/gi';
 import { GoPlus } from 'react-icons/go';
 import { FaBars } from 'react-icons/fa';
 
-export const Header = () => {
+export const Header = ({ displaySidebar, setDisplaySidebar }) => {
   return (
     <header className="header">
       <nav>
-        <div className="set-display">
+        <div
+          className="set-display"
+          onClick={() => setDisplaySidebar(!displaySidebar)}
+        >
           <button>
             <FaBars />
           </button>

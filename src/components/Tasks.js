@@ -32,16 +32,18 @@ export const Tasks = () => {
 
   return (
     <div className="tasks">
-      <h2>{ projectName }</h2>
-      <ul className="tasks__list">
-        {tasks.map(task => (
-          <li key={`${task.id}`}>
-            <Checkbox id={task.id} />
-            <span>{ task.task }</span>
-          </li>
-        ))}
-        <AddTask />
-      </ul>
+      <div className="tasks__container">
+        <h2>{ projectName }</h2>
+        <ul className="tasks__list">
+          {tasks.map(task => (
+            <li key={`${task.id}`}>
+              <Checkbox id={task.id} />
+              <span>{ task.task }</span>
+            </li>
+          ))}
+          <AddTask />
+        </ul>
+      </div>
     </div>
   )
 }
