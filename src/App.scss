@@ -708,15 +708,26 @@ header {
   justify-content: center;
   align-items: center;
   font-family: Pacifico, sans-serif;
+
   
   img {
     height: 15rem;
     width: 18rem;
   }
-
+  
   p {
     font-size: 16px;
     color: $generic-bg;
     margin-top: .5rem;
+  }
+  
+  @include mq('900px'){
+    margin: 0;
+    margin-top: 7rem;
+
+    img {
+      height: 10rem;
+      width: 12rem;
+    }
   }
 }
