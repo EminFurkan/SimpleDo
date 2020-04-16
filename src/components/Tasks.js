@@ -6,7 +6,7 @@ import { getTitle, getFilteredTitle, filteredTasksExist } from '../utils';
 import { useSelectedProjectValue, useProjectsValue } from '../context';
 import { AddTask } from './AddTask';
 
-export const Tasks = () => {
+export const Tasks = ({ darkMode }) => {
   const { selectedProject } = useSelectedProjectValue();
   const { projects } = useProjectsValue();
   const { tasks } = useTasks(selectedProject);
@@ -42,6 +42,21 @@ export const Tasks = () => {
             </li>
           ))}
           <AddTask />
+          {tasks.length === 0 ? (
+            <div className="empty-state-illustration">
+              <img
+              src={
+                darkMode ?
+                require('../assets/coffee-dm.png')
+                : require('../assets/coffee.png')
+              }
+              alt="state-illustration"
+              />
+              <p>What will you accomplish?</p>
+            </div>
+          )
+          : undefined
+        }
         </ul>
       </div>
     </div>

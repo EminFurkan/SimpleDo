@@ -20,6 +20,7 @@ export const App = () => {
         <Content
           displaySidebar={displaySidebar}
           setDisplaySidebar={setDisplaySidebar}
+          darkMode={darkMode}
         />
       </main>
     </ProjectsProvider>
