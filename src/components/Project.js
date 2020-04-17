@@ -4,7 +4,7 @@ import { useProjectsValue, useSelectedProjectValue } from '../context';
 import { firebase } from '../firebase';
 
 export const Project = () => {
-  const [showConfirm, setShowConfirm] = useState(false);
+  const [displayConfirm, setDisplayConfirm] = useState(false);
   const [active, setActive] = useState(null);
   const { projects, setProjects } = useProjectsValue();
   const { setSelectedProject } = useSelectedProjectValue();
@@ -40,26 +40,30 @@ export const Project = () => {
         <span className="sidebar__project-name">{ project.name }</span>
         <span
           className="sidebar__project-delete"
-          onClick={() => setShowConfirm(!showConfirm)}
+          onClick={() => setDisplayConfirm(!displayConfirm)}
         >
           <FaTrashAlt className="sidebar__icon" />
-          {showConfirm && (
+          {displayConfirm && (
             <div className="project-delete-modal">
               <div className="project-delete-modal__inner">
-                <p>Are you sure you want to delete: <span
+                <p>Are you sure you want to delete:
+                <span 
                   className="name"
                 >
-                  {project.name}</span>
+                  &nbsp;{project.name}
+                </span>
                 </p>
                 <div className="project-delete-modal__actions">
                   <button
+                    className="project-delete-modal__actions-delete"
                     type="button"
                     onClick={() => deleteProject(project.docId)}
                   >
                     Delete
                   </button>
                   <span
-                    onClick={() => setShowConfirm(!showConfirm)}
+                    className="project-delete-modal__actions-cancel"
+                    onClick={() => setDisplayConfirm(!displayConfirm)}
                   >
                     Cancel
                   </span>
