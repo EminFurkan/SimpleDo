@@ -2,15 +2,22 @@ import React, { useState } from 'react';
 import moment from 'moment';
 import { firebase } from '../firebase';
 import { useSelectedProjectValue } from '../context';
-
+import { SelectProject } from './SelectProject';
+import { SelectDate } from './SelectDate';
+import { FaRegFlag, FaRegCalendar } from 'react-icons/fa';
+import { IoIosList, } from 'react-icons/io';
 
 export const AddTask = () => {
   const [task, setTask] = useState('');
   const [displayMainEditor, setDisplayMainEditor] = useState(false);
+  const [project, setProject] = useState('');
+  const [date, setDate] = useState('');
+  const [displayDateMenu, setDisplayDateMenu] = useState(false);
+  const [displayProjectMenu, setDisplayProjectMenu] = useState(false);
   const { selectedProject } = useSelectedProjectValue();
 
   const addNewTask = () => {
-    const projectId = selectedProject;
+    const projectId = project || selectedProject;
     let filteredDate = '';
 
     if (projectId === 'TODAY'){
@@ -29,11 +36,12 @@ export const AddTask = () => {
           isArchived: false,
           projectId,
           task,
-          date: filteredDate,
+          date: filteredDate || date,
           userId: '1'
         })
         .then(() => {
           setTask('');
+          setProject('');
         })
     )
   }
@@ -71,9 +79,34 @@ export const AddTask = () => {
             >
               Cancel
             </span>
+            <div className="add-task__item-actions">
+              <span
+                onClick={() => setDisplayProjectMenu(!displayProjectMenu)}
+              >
+                <IoIosList />
+              </span>
+              <span
+                onClick={() => setDisplayDateMenu(!displayDateMenu)}
+              >
+                <FaRegCalendar />
+              </span>
+              <span>
+                <FaRegFlag />
+              </span>
+            </div>
           </div>
         </div>
       )}
+      <SelectProject 
+        setProject={setProject}
+        displayProjectMenu={displayProjectMenu}
+        setDisplayProjectMenu={setDisplayProjectMenu}
+      />
+      <SelectDate
+          setDate={setDate}
+          displayDateMenu={displayDateMenu}
+          setDisplayDateMenu={setDisplayDateMenu}
+      />
       {!displayMainEditor && (
         <div
           className="add-task__action"
