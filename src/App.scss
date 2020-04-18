@@ -72,7 +72,6 @@ $generic-bg: #1da1f2;
   position: absolute;
   width: 15rem;
   height: auto;
-  // box-shadow: 0 10px 20px rgba(0,0,0,.19), 0 6px 6px rgba(0,0,0,.23);
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.08);
   border-radius: 3px;
   color: #202020;
@@ -129,6 +128,7 @@ $generic-bg: #1da1f2;
       &__input {
         background-color: #282828;
         color: rgba(255, 255, 255, 0.87);
+        box-shadow: 0 10px 20px rgba(0,0,0,.19), 0 6px 6px rgba(0,0,0,.23);
         label {
           color: rgba(255, 255, 255, 0.87);
         }
@@ -166,6 +166,34 @@ $generic-bg: #1da1f2;
     }
     span:hover {
       color: hsla(0,0%,100%,.87);
+    }
+  }
+
+  .add-task__select-project {
+    border-color: hsla(0,0%,100%,.1);
+    color: rgba(255, 255, 255, 0.87);
+    box-shadow: 0 10px 20px rgba(0,0,0,.19), 0 6px 6px rgba(0,0,0,.23);
+
+    li:hover {
+      background-color: #363636;
+    }
+  }
+  .add-task__select-priority {
+    border-color: hsla(0,0%,100%,.1);
+    color: rgba(255, 255, 255, 0.87);
+    box-shadow: 0 10px 20px rgba(0,0,0,.19), 0 6px 6px rgba(0,0,0,.23);
+
+    li:hover {
+      background-color: #363636;
+    }
+  }
+  .add-task__select-date {
+    border-color: hsla(0,0%,100%,.1);
+    color: rgba(255, 255, 255, 0.87);
+    box-shadow: 0 10px 20px rgba(0,0,0,.19), 0 6px 6px rgba(0,0,0,.23);
+
+    li:hover {
+      background-color: #363636;
     }
   }
 }
@@ -570,7 +598,7 @@ header {
     padding: 1rem 1rem .3rem 1rem;
     border-radius: 5px;
     margin: 1rem 0;
-    box-shadow: rgba(0, 0, 0, .12) 0px 0px 0px 1px, rgba(0, 0, 0, .24) 0px 2px 5px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.08);
 
     label {
       font-size: 12px;
