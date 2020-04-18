@@ -68,6 +68,30 @@ $generic-bg: #1da1f2;
   }
 }
 
+@mixin popup {
+  position: absolute;
+  width: 15rem;
+  height: auto;
+  // box-shadow: 0 10px 20px rgba(0,0,0,.19), 0 6px 6px rgba(0,0,0,.23);
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.08);
+  border-radius: 3px;
+  color: #202020;
+  border: 1px solid #ddd;
+}
+
+@mixin checkbox(){
+  width: 18px;
+  height: 18px;
+  border: 1px solid grey;
+  border-radius: 50%;
+  margin-right:.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color .15s ease-in;
+  cursor: pointer;
+}
+
 //Darkmode
 .darkmode {
   nav {
@@ -104,7 +128,6 @@ $generic-bg: #1da1f2;
       }
       &__input {
         background-color: #282828;
-        box-shadow: rgba(0, 0, 0, .12) 0px 0px 0px 1px, rgba(0, 0, 0, .24) 0px 2px 5px;
         color: rgba(255, 255, 255, 0.87);
         label {
           color: rgba(255, 255, 255, 0.87);
@@ -135,6 +158,14 @@ $generic-bg: #1da1f2;
   .empty-state-illustration {
     p{
       color: rgba(255, 255, 255, 0.87);
+    }
+  }
+  .add-task__item-actions {
+    span {
+      color: hsla(0,0%,100%,.56);
+    }
+    span:hover {
+      color: hsla(0,0%,100%,.87);
     }
   }
 }
@@ -539,6 +570,7 @@ header {
     padding: 1rem 1rem .3rem 1rem;
     border-radius: 5px;
     margin: 1rem 0;
+    box-shadow: rgba(0, 0, 0, .12) 0px 0px 0px 1px, rgba(0, 0, 0, .24) 0px 2px 5px;
 
     label {
       font-size: 12px;
@@ -619,17 +651,8 @@ header {
       font-weight: 300;
       font-size: 14px;
 
-      .checkbox {
-        width: 18px;
-        height: 18px;
-        border: 1px solid grey;
-        border-radius: 50%;
-        margin-right:.5rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: background-color .15s ease-in;
-        cursor: pointer;
+      .checkbox__0 {
+        @include checkbox();
 
         svg {
           height: 12px;
@@ -645,6 +668,57 @@ header {
           }
         }
       }
+      .checkbox__1 {
+        @include checkbox();
+        border-color: #d1453b;
+        border-width: 2px;
+        background-color: rgba(209,69,59,.1);
+        svg {
+          height: 12px;
+          width: 12px;
+          color: transparent;
+        }
+        &:hover {
+          background-color: rgba(209,69,59,.1);
+          svg {
+            color: #d1453b;
+          }
+        }
+      }
+      .checkbox__2 {
+        @include checkbox();
+        border-width: 2px;
+        border-color: #eb8909;
+        background-color: rgba(235,137,9,.1);
+        svg {
+          height: 12px;
+          width: 12px;
+          color: transparent;
+        }
+        &:hover {
+          background-color: rgba(235,137,9,.1);
+          svg {
+            color: #eb8909;
+          }
+        }
+      }
+      .checkbox__3 {
+        @include checkbox();
+        border-width: 2px;
+        border-color: #246fe0;
+        background-color: rgba(36,111,224,.1);
+        svg {
+          height: 12px;
+          width: 12px;
+          color: transparent;
+        }
+        &:hover {
+          background-color: rgba(36,111,224,.1);
+          svg {
+            color: #246fe0;
+          }
+        }
+      }
     }
   }
 }
@@ -655,6 +729,7 @@ header {
   color: #808080;
   font-weight: 300;
   font-size: 14px;
+  position: relative;
 
   &__plus {
     font-size: 25px;
@@ -711,8 +786,133 @@ header {
   &__cancel:hover {
     text-decoration: underline;
   }
+
+  &__item-actions {
+    margin: auto 0 auto auto;
+    font-size: 20px;
+
+    span {
+      margin-left: 1rem;
+    }
+    span:hover {
+      color: #202020;
+      cursor: pointer;
+    }
+  }
+  //Select Date Component
+  &__select-date {
+    @include popup();
+    left: 82%;
+    
+    li {
+      font-weight: 500 !important;
+      font-size: 13px !important;
+      padding: 0 .5rem;
+      cursor: pointer;
+      height: 2rem;
+
+      span {
+        margin-left: 1rem;
+      }
+    }
+
+    li:nth-child(1){
+      svg {
+        color: #2c7873;
+      }
+    }
+    li:nth-child(2){
+      svg {
+        color: #d9b44a;
+      }
+    }
+    li:nth-child(3){
+      svg {
+        color: #775167;
+      }
+    }
+    li:nth-child(4){
+      svg {
+        color: grey;
+      }
+    }
+
+    li:hover {
+      background-color: #f3f3f3;
+    }
+  }
+  //Select Project Component
+  &__select-project {
+    @include popup();
+    left: 80%;
+
+    li {
+      font-weight: 500 !important;
+      font-size: 13px !important;
+      padding: 0 .5rem;
+      cursor: pointer;
+      height: 2rem;
+
+      span {
+        margin-left: 1rem;
+      }
+    }
+
+    li:hover {
+      background-color: #f3f3f3;
+    }
+  }
+  //Select Priority
+  &__select-priority {
+    @include popup();
+    left: 84%;
+
+    li {
+      font-weight: 500 !important;
+      font-size: 13px !important;
+      padding: 0 .5rem;
+      cursor: pointer;
+      height: 2rem;
+
+      span {
+        margin-left: 1rem;
+      }
+    }
+
+    li:hover{
+      background-color: #f3f3f3;
+    }
+
+    li:nth-child(1){
+      svg {
+        fill: rgb(209, 69, 59);
+        color: rgb(209, 69, 59);
+        fill-rule: nonzero;
+      }
+    }
+    li:nth-child(2){
+      svg {
+        color: rgb(235, 137, 9);
+        fill: rgb(235, 137, 9);
+        fill-rule: nonzero;
+      }
+    }
+    li:nth-child(3){
+      svg {
+        color: rgb(36, 111, 224);
+        fill: rgb(36, 111, 224);
+        fill-rule: nonzero;
+      }
+    }
+    li:nth-child(4){
+      svg {
+        color: grey;
+      }
+    }
+  }
 }
 
+//Empty Project Illustration
 .empty-state-illustration {
   margin: 5rem 15rem;
   display: flex;

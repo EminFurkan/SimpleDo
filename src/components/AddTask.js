@@ -4,16 +4,18 @@ import { firebase } from '../firebase';
 import { useSelectedProjectValue } from '../context';
 import { SelectProject } from './SelectProject';
 import { SelectDate } from './SelectDate';
-import { FaRegFlag, FaRegCalendar } from 'react-icons/fa';
-import { IoIosList, } from 'react-icons/io';
+import { SelectPriority } from './SelectPriority';
+import { FiFlag, FiCalendar, FiList } from 'react-icons/fi';
 
 export const AddTask = () => {
   const [task, setTask] = useState('');
   const [displayMainEditor, setDisplayMainEditor] = useState(false);
   const [project, setProject] = useState('');
   const [date, setDate] = useState('');
+  const [priority, setPriority] = useState('');
   const [displayDateMenu, setDisplayDateMenu] = useState(false);
   const [displayProjectMenu, setDisplayProjectMenu] = useState(false);
+  const [displayPriorityMenu, setDisplayPriorityMenu] = useState(false);
   const { selectedProject } = useSelectedProjectValue();
 
   const addNewTask = () => {
@@ -37,6 +39,7 @@ export const AddTask = () => {
           projectId,
           task,
           date: filteredDate || date,
+          priority: priority || '0',
           userId: '1'
         })
         .then(() => {
@@ -83,15 +86,17 @@ export const AddTask = () => {
               <span
                 onClick={() => setDisplayProjectMenu(!displayProjectMenu)}
               >
-                <IoIosList />
+                <FiList />
               </span>
               <span
                 onClick={() => setDisplayDateMenu(!displayDateMenu)}
               >
-                <FaRegCalendar />
+                <FiCalendar />
               </span>
-              <span>
-                <FaRegFlag />
+              <span
+                onClick={() => setDisplayPriorityMenu(!displayPriorityMenu)}
+              >
+                <FiFlag />
               </span>
             </div>
           </div>
@@ -103,9 +108,14 @@ export const AddTask = () => {
         setDisplayProjectMenu={setDisplayProjectMenu}
       />
       <SelectDate
-          setDate={setDate}
-          displayDateMenu={displayDateMenu}
-          setDisplayDateMenu={setDisplayDateMenu}
+        setDate={setDate}
+        displayDateMenu={displayDateMenu}
+        setDisplayDateMenu={setDisplayDateMenu}
+      />
+      <SelectPriority
+        setPriority={setPriority}
+        displayPriorityMenu={displayPriorityMenu}
+        setDisplayPriorityMenu={setDisplayPriorityMenu}
       />
       {!displayMainEditor && (
         <div

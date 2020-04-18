@@ -10,7 +10,7 @@ export const SelectDate = ({
   setDisplayDateMenu
 }) => 
   displayDateMenu && (
-  <div className="select-date">
+  <div className="add-task__select-date">
     <ul className="select-date__list">
       <li
         onClick={() => {

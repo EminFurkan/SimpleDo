@@ -37,7 +37,10 @@ export const Tasks = ({ darkMode }) => {
         <ul className="tasks__list">
           {tasks.map(task => (
             <li key={`${task.id}`}>
-              <Checkbox id={task.id} />
+              <Checkbox
+                id={ task.id }
+                priority={ task.priority }
+              />
               <span>{ task.task }</span>
             </li>
           ))}

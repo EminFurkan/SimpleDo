@@ -11,7 +11,7 @@ export const SelectProject = ({
   return (
     projects && displayProjectMenu &&
     (
-      <div className="select-project">
+      <div className="add-task__select-project">
         <ul className="select-project__list">
           {projects.map(project => (
             <li
