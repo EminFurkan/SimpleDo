@@ -45,6 +45,7 @@ export const AddTask = () => {
         .then(() => {
           setTask('');
           setProject('');
+          setPriority('0');
         })
     )
   }
