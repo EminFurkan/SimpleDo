@@ -96,7 +96,7 @@ $generic-bg: #1da1f2;
   nav {
     color: rgba(255, 255, 255, 0.87) !important;
   }
-  header {
+  .header {
     -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .15);
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .15);
     // background-color: #3d3d3d;
@@ -205,7 +205,7 @@ $generic-bg: #1da1f2;
 }
 
 //Header
-header {
+.header {
   background-color: $generic-bg;
   border-bottom: solid 1px #1d8ff2;
   transition: height 200ms ease-in;

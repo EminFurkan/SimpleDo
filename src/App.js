@@ -1,29 +1,20 @@
-import React, { useState } from 'react';
-import { Header } from './components/layout/Header';
-import { Content } from './components/layout/Content';
-import { ProjectsProvider, SelectedProjectProvider } from './context';
+import React from 'react'
+import { Main } from './components/Main'
+import { Home } from './components/landing/Home'
+import { Register } from './components/landing/Register'
+import { Login } from './components/landing/Login'
+
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 export const App = () => {
-  const [displaySidebar, setDisplaySidebar] = useState(true);
-  const [darkMode, setDarkMode] = useState(false);
-
   return (
-  <SelectedProjectProvider>
-    <ProjectsProvider>
-      <main className={ darkMode ? 'darkmode' : undefined }>
-        <Header
-        displaySidebar={displaySidebar}
-        setDisplaySidebar={setDisplaySidebar}
-        darkMode={darkMode}
-        setDarkMode={setDarkMode}
-        />
-        <Content
-          displaySidebar={displaySidebar}
-          setDisplaySidebar={setDisplaySidebar}
-          darkMode={darkMode}
-        />
-      </main>
-    </ProjectsProvider>
-  </SelectedProjectProvider>
-  );
+    <Router>
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/app" component={Main} />
+        <Route path="/users/showRegister" component={Register} />
+        <Route path="/users/showLogin" component={Login} />
+      </Switch>
+    </Router>
+  )
 }
