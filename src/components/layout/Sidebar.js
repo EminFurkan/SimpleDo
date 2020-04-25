@@ -3,7 +3,7 @@ import {
   FaChevronDown,
   FaInbox,
   FaRegCalendarAlt,
-  FaRegCalendar,
+  FaRegCalendar
 } from 'react-icons/fa';
 import { useSelectedProjectValue } from '../../context';
 import { ProjectList } from '../ProjectList';
@@ -57,19 +57,19 @@ export const Sidebar = ({ displaySidebar, setDisplaySidebar }) => {
           </div>
         </li>
       </ul>
-      <div 
+      <div
         className="sidebar__middle"
         onClick={() => setDisplayProjects(!displayProjects)}
       >
         <span>
           <FaChevronDown
             className={!displayProjects ? 'hide-projects' : undefined}
-           />
+          />
         </span>
         <h2>Projects</h2>
       </div>
-        { displayProjects && <ProjectList /> }
-        { <AddProject /> }
+      {displayProjects && <ProjectList />}
+      {<AddProject />}
     </div>
-  )
-}
+  );
+};

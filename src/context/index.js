@@ -1,15 +1,14 @@
-import { 
+import {
   ProjectsContext,
   ProjectsProvider,
-  useProjectsValue 
+  useProjectsValue
 } from './projects-context';
 
-import { 
+import {
   SelectedProjectContext,
   SelectedProjectProvider,
-  useSelectedProjectValue 
+  useSelectedProjectValue
 } from './selected-project-context';
-
 
 export {
   ProjectsContext,
@@ -17,5 +16,5 @@ export {
   useProjectsValue,
   SelectedProjectContext,
   SelectedProjectProvider,
-  useSelectedProjectValue 
-}
+  useSelectedProjectValue
+};

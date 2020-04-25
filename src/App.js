@@ -1,10 +1,10 @@
-import React from 'react'
-import { Main } from './components/Main'
-import { Home } from './components/landing/Home'
-import { Register } from './components/landing/Register'
-import { Login } from './components/landing/Login'
+import React from 'react';
+import { Main } from './components/Main';
+import { Home } from './components/landing/Home';
+import { Register } from './components/landing/Register';
+import { Login } from './components/landing/Login';
 
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 export const App = () => {
   return (
@@ -16,5 +16,5 @@ export const App = () => {
         <Route path="/users/showLogin" component={Login} />
       </Switch>
     </Router>
-  )
-}
+  );
+};

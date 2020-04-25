@@ -22,15 +22,14 @@ export const AddTask = () => {
     const projectId = project || selectedProject;
     let filteredDate = '';
 
-    if (projectId === 'TODAY'){
+    if (projectId === 'TODAY') {
       filteredDate = moment().format('DD/MM/YYYY');
-    } else if (projectId === 'NEXT_7'){
-      filteredDate = moment()
-        .add(7, 'days')
-        .format('DD/MM/YYYY');
+    } else if (projectId === 'NEXT_7') {
+      filteredDate = moment().add(7, 'days').format('DD/MM/YYYY');
     }
     return (
-      task && projectId &&
+      task &&
+      projectId &&
       firebase
         .firestore()
         .collection('tasks')
@@ -47,8 +46,8 @@ export const AddTask = () => {
           setProject('');
           setPriority('0');
         })
-    )
-  }
+    );
+  };
 
   return (
     <div className="add-task">
@@ -56,22 +55,17 @@ export const AddTask = () => {
         <div className="add-task__editor">
           <input
             className="add-task__content"
-            onChange={e => setTask(e.target.value)}
+            onChange={(e) => setTask(e.target.value)}
             type="text"
             value={task}
-            onKeyDown={e => {
-              if (e.key === 'Enter'){
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
                 addNewTask();
               }
             }}
           />
-          <div
-            className="add-task__actions"
-          >
-            <button
-              className="add-task__submit"
-              onClick={() => addNewTask()}
-            >
+          <div className="add-task__actions">
+            <button className="add-task__submit" onClick={() => addNewTask()}>
               Add Task
             </button>
             <span
@@ -84,14 +78,10 @@ export const AddTask = () => {
               Cancel
             </span>
             <div className="add-task__item-actions">
-              <span
-                onClick={() => setDisplayProjectMenu(!displayProjectMenu)}
-              >
+              <span onClick={() => setDisplayProjectMenu(!displayProjectMenu)}>
                 <FiList />
               </span>
-              <span
-                onClick={() => setDisplayDateMenu(!displayDateMenu)}
-              >
+              <span onClick={() => setDisplayDateMenu(!displayDateMenu)}>
                 <FiCalendar />
               </span>
               <span
@@ -103,7 +93,7 @@ export const AddTask = () => {
           </div>
         </div>
       )}
-      <SelectProject 
+      <SelectProject
         setProject={setProject}
         displayProjectMenu={displayProjectMenu}
         setDisplayProjectMenu={setDisplayProjectMenu}
@@ -123,9 +113,11 @@ export const AddTask = () => {
           className="add-task__action"
           onClick={() => setDisplayMainEditor(!displayMainEditor)}
         >
-          <p><span className="add-task__plus">+</span> Add task</p>
+          <p>
+            <span className="add-task__plus">+</span> Add task
+          </p>
         </div>
       )}
     </div>
-  )
-}
+  );
+};

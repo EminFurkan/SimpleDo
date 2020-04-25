@@ -9,7 +9,7 @@ export const Project = () => {
   const { projects, setProjects } = useProjectsValue();
   const { setSelectedProject } = useSelectedProjectValue();
 
-  const deleteProject = docId => {
+  const deleteProject = (docId) => {
     firebase
       .firestore()
       .collection('projects')
@@ -18,26 +18,26 @@ export const Project = () => {
       .then(() => {
         setProjects([...projects]);
         setSelectedProject('INBOX');
-      })
-  }
+      });
+  };
   return (
-    projects && projects.map(
-      project => (
+    projects &&
+    projects.map((project) => (
       <li
         key={project.projectId}
         data-doc-id={project.docId}
         className={
-          active === project.projectId ?
-          'active sidebar__project'
-          : 'sidebar__project'
+          active === project.projectId
+            ? 'active sidebar__project'
+            : 'sidebar__project'
         }
         onClick={() => {
           setActive(project.projectId);
           setSelectedProject(project.projectId);
-      }}
+        }}
       >
         <span className="sidebar__dot"></span>
-        <span className="sidebar__project-name">{ project.name }</span>
+        <span className="sidebar__project-name">{project.name}</span>
         <span
           className="sidebar__project-delete"
           onClick={() => setDisplayConfirm(!displayConfirm)}
@@ -46,12 +46,9 @@ export const Project = () => {
           {displayConfirm && (
             <div className="project-delete-modal">
               <div className="project-delete-modal__inner">
-                <p>Are you sure you want to delete:
-                <span 
-                  className="name"
-                >
-                  &nbsp;{project.name}
-                </span>
+                <p>
+                  Are you sure you want to delete:
+                  <span className="name">&nbsp;{project.name}</span>
                 </p>
                 <div className="project-delete-modal__actions">
                   <button
@@ -73,7 +70,6 @@ export const Project = () => {
           )}
         </span>
       </li>
-      )
-    )
-  )
-}
+    ))
+  );
+};

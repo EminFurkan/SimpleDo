@@ -10,4 +10,4 @@ export const Content = ({ displaySidebar, setDisplaySidebar, darkMode }) => (
     />
     <Tasks darkMode={darkMode} />
   </section>
-)
+);

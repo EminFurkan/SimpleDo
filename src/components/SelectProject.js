@@ -9,11 +9,11 @@ export const SelectProject = ({
   const { projects } = useProjectsValue();
 
   return (
-    projects && displayProjectMenu &&
-    (
+    projects &&
+    displayProjectMenu && (
       <div className="add-task__select-project">
         <ul className="select-project__list">
-          {projects.map(project => (
+          {projects.map((project) => (
             <li
               onClick={() => {
                 setProject(project.projectId);
@@ -24,7 +24,7 @@ export const SelectProject = ({
             </li>
           ))}
         </ul>
-    </div>
+      </div>
     )
-  )
-}
+  );
+};

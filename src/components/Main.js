@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
-import { Header } from './layout/Header'
-import { Content } from './layout/Content'
-import { ProjectsProvider, SelectedProjectProvider } from '../context'
-import '../styles/Main.scss'
+import React, { useState } from 'react';
+import { Header } from './layout/Header';
+import { Content } from './layout/Content';
+import { ProjectsProvider, SelectedProjectProvider } from '../context';
+import '../styles/Main.scss';
 
 export const Main = () => {
-  const [displaySidebar, setDisplaySidebar] = useState(true)
-  const [darkMode, setDarkMode] = useState(false)
+  const [displaySidebar, setDisplaySidebar] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
 
   return (
     <SelectedProjectProvider>
@@ -26,5 +26,5 @@ export const Main = () => {
         </main>
       </ProjectsProvider>
     </SelectedProjectProvider>
-  )
-}
+  );
+};

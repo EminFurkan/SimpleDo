@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import { useTasks } from '../hooks';
 import { filteredTasks } from '../constants';
 import { Checkbox } from './Checkbox';
@@ -10,7 +10,7 @@ export const Tasks = ({ darkMode }) => {
   const { selectedProject } = useSelectedProjectValue();
   const { projects } = useProjectsValue();
   const { tasks } = useTasks(selectedProject);
-  
+
   let projectName = '';
 
   if (filteredTasksExist(selectedProject) && selectedProject) {
@@ -33,35 +33,30 @@ export const Tasks = ({ darkMode }) => {
   return (
     <div className="tasks">
       <div className="tasks__container">
-        <h2>{ projectName }</h2>
+        <h2>{projectName}</h2>
         <ul className="tasks__list">
-          {tasks.map(task => (
+          {tasks.map((task) => (
             <li key={`${task.id}`}>
-              <Checkbox
-                id={ task.id }
-                priority={ task.priority }
-              />
-              <span>{ task.task }</span>
+              <Checkbox id={task.id} priority={task.priority} />
+              <span>{task.task}</span>
             </li>
           ))}
           <AddTask />
           {tasks.length === 0 ? (
             <div className="empty-state-illustration">
               <img
-              src={
-                darkMode ?
-                require('../assets/coffee-dm.png')
-                : require('../assets/coffee.png')
-              }
-              alt="state-illustration"
+                src={
+                  darkMode
+                    ? require('../assets/coffee-dm.png')
+                    : require('../assets/coffee.png')
+                }
+                alt="state-illustration"
               />
               <p>What will you accomplish?</p>
             </div>
-          )
-          : undefined
-        }
+          ) : undefined}
         </ul>
       </div>
     </div>
-  )
-}
+  );
+};

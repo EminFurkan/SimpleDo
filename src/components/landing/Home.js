@@ -1,7 +1,7 @@
-import React from 'react'
-import { Navbar } from './Navbar'
-import { Content } from './Content'
-import '../../styles/Home.scss'
+import React from 'react';
+import { Navbar } from './Navbar';
+import { Content } from './Content';
+import '../../styles/Home.scss';
 
 export const Home = () => {
   return (
@@ -9,5 +9,5 @@ export const Home = () => {
       <Navbar />
       <Content />
     </div>
-  )
-}
+  );
+};

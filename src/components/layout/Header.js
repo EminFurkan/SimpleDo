@@ -27,7 +27,8 @@ export const Header = ({
                 <GoPlus />
               </button>
             </li>
-            <li className="actions__darkmode"
+            <li
+              className="actions__darkmode"
               onClick={() => setDarkMode(!darkMode)}
             >
               <button>
@@ -38,5 +39,5 @@ export const Header = ({
         </div>
       </nav>
     </header>
-  )
-}
+  );
+};

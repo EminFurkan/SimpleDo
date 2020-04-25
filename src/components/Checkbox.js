@@ -1,26 +1,19 @@
 import React from 'react';
 import { firebase } from '../firebase';
-import { IoMdCheckmark } from 'react-icons/io'
+import { IoMdCheckmark } from 'react-icons/io';
 
 export const Checkbox = ({ id, priority }) => {
   const archiveTask = () => {
-    firebase
-      .firestore()
-      .collection('tasks')
-      .doc(id)
-      .update({
-        isArchived: true,
-      });
-  }
+    firebase.firestore().collection('tasks').doc(id).update({
+      isArchived: true
+    });
+  };
 
   return (
-    <div
-      className="checkbox-container"
-      onClick={() => archiveTask()}
-    >
-      <span className={`checkbox__${priority}`} >
+    <div className="checkbox-container" onClick={() => archiveTask()}>
+      <span className={`checkbox__${priority}`}>
         <IoMdCheckmark />
       </span>
     </div>
-  )
-}
+  );
+};

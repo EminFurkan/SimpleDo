@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from 'react'
-import showcase from '../../assets/showcase-phone.png'
-import showcaseLarge from '../../assets/showcase-large.png'
-import phone from '../../assets/phone.png'
-import nav from '../../assets/nav.png'
-import projects from '../../assets/projects.png'
-import tasks from '../../assets/tasks.png'
-import priority from '../../assets/priority.png'
-import date from '../../assets/date.png'
-import { Link } from 'react-router-dom'
-import bg from '../../assets/bg.jpeg'
+import React, { useEffect, useState } from 'react';
+import showcase from '../../assets/showcase-phone.png';
+import showcaseLarge from '../../assets/showcase-large.png';
+import phone from '../../assets/phone.png';
+import nav from '../../assets/nav.png';
+import projects from '../../assets/projects.png';
+import tasks from '../../assets/tasks.png';
+import priority from '../../assets/priority.png';
+import date from '../../assets/date.png';
+import { Link } from 'react-router-dom';
+import bg from '../../assets/bg.jpeg';
 
 export const Content = () => {
-  let [position, setPosition] = useState(0)
+  let [position, setPosition] = useState(0);
 
   useEffect(() => {
     const onScroll = window.addEventListener('scroll', () => {
-      setPosition(window.pageYOffset)
-    })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+      setPosition(window.pageYOffset);
+    });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
     <>
@@ -186,5 +186,5 @@ export const Content = () => {
         <p>simpledo&copy; all rights reserved. </p>
       </footer>
     </>
-  )
-}
+  );
+};

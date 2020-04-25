@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export const Register = () => {
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState({});
 
   const onSubmit = () => {
-    console.log('test')
-  }
+    console.log('test');
+  };
 
   return (
     <div className="register">
@@ -39,5 +39,5 @@ export const Register = () => {
         </footer>
       </div>
     </div>
-  )
-}
+  );
+};
