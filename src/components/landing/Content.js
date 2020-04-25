@@ -119,7 +119,7 @@ export const Content = () => {
           </span>
         </span>
       </section>
-      <section className="darkmode">
+      <section className="lights-out">
         <span
           className={position > 6910 ? 'switch' : undefined}
           style={
