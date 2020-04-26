@@ -1,7 +1,8 @@
 import React from 'react';
-import { GiCycle } from 'react-icons/gi';
-import { GoPlus } from 'react-icons/go';
+import { GoPlus, GoSync } from 'react-icons/go';
 import { FaBars } from 'react-icons/fa';
+import { IoMdPower } from 'react-icons/io';
+
 
 export const Header = ({
   displaySidebar,
@@ -32,7 +33,14 @@ export const Header = ({
               onClick={() => setDarkMode(!darkMode)}
             >
               <button>
-                <GiCycle />
+                <GoSync />
+              </button>
+            </li>
+            <li
+              className="actions__signout"
+            >
+              <button>
+                <IoMdPower />
               </button>
             </li>
           </ul>

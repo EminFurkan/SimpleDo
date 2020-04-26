@@ -182,9 +182,6 @@ export const Content = () => {
           </div>
         </div>
       </section>
-      <footer className="footer">
-        <p>simpledo&copy; all rights reserved. </p>
-      </footer>
     </>
   );
 };
