@@ -1,18 +1,20 @@
 import { useState, useEffect } from 'react';
 import { firebase } from '../firebase';
 import { filteredTasksExist } from '../utils';
+import { useAuthValue } from '../context';
 import moment from 'moment';
 
 export const useTasks = (selectedProject) => {
   const [tasks, setTasks] = useState([]);
   const [archivedTasks, setArchivedTasks] = useState([]);
+  const { currentUser } = useAuthValue();
 
   useEffect(() => {
     // Fetching 'tasks' collection based on userId from db
     let unsubscribe = firebase
       .firestore()
       .collection('tasks')
-      .where('userId', '==', '1');
+      .where('userId', '==', currentUser.uid);
     // Checking if selectedProject is an id (user defined projects have id's)
     // or a pre-defined (filtered) project class such as 'TODAY' 'INBOX' 'NEXT_7'
     unsubscribe =
@@ -52,19 +54,20 @@ export const useTasks = (selectedProject) => {
 
       return () => unsubscribe();
     });
-  }, [selectedProject]);
+  }, [selectedProject, currentUser.uid]);
 
   return { tasks, archivedTasks };
 };
 
 export const useProjects = () => {
   const [projects, setProjects] = useState([]);
+  const { currentUser } = useAuthValue();
 
   useEffect(() => {
     firebase
       .firestore()
       .collection('projects')
-      .where('userId', '==', '1')
+      .where('userId', '==', currentUser.uid)
       .orderBy('projectId')
       .get() // Getting projects once because it won't be changing often
       .then((snapshot) => {
@@ -78,7 +81,7 @@ export const useProjects = () => {
           setProjects(allProjects);
         }
       });
-  }, [projects]);
+  }, [projects, currentUser.uid]);
 
   return { projects, setProjects };
 };

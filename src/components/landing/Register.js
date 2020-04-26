@@ -1,11 +1,28 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link, Redirect } from 'react-router-dom';
+import { firebase } from '../../firebase';
 
 export const Register = () => {
-  const [user, setUser] = useState({});
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const { email, password, name } = e.target.elements;
 
-  const onSubmit = () => {
-    console.log('test');
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email.value, password.value)
+      .then((res) => {
+        firebase.firestore().collection('users').add({
+          userId: res.user.uid,
+          name: name.value,
+          email: email.value,
+          password: password.value
+        });
+        console.log('Success')
+        return <Redirect to="users/showLogin" />;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -22,11 +39,11 @@ export const Register = () => {
         </div>
         <form onSubmit={onSubmit}>
           <label>Email</label>
-          <input type="email" name="email" />
+          <input type="email" name="email" autoComplete="on" />
           <label>Your name</label>
-          <input type="text" name="name" />
+          <input type="text" name="name" autoComplete="on" />
           <label>Password</label>
-          <input type="password" name="password" />
+          <input type="password" name="password" autoComplete="on" />
           <button>Sign up with Email</button>
         </form>
         <footer>

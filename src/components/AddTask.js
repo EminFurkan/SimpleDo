@@ -6,6 +6,7 @@ import { SelectProject } from './SelectProject';
 import { SelectDate } from './SelectDate';
 import { SelectPriority } from './SelectPriority';
 import { FiFlag, FiCalendar, FiList } from 'react-icons/fi';
+import { useAuthValue } from '../context';
 
 export const AddTask = () => {
   const [task, setTask] = useState('');
@@ -17,6 +18,7 @@ export const AddTask = () => {
   const [displayProjectMenu, setDisplayProjectMenu] = useState(false);
   const [displayPriorityMenu, setDisplayPriorityMenu] = useState(false);
   const { selectedProject } = useSelectedProjectValue();
+  const { currentUser } = useAuthValue();
 
   const addNewTask = () => {
     const projectId = project || selectedProject;
@@ -39,7 +41,7 @@ export const AddTask = () => {
           task,
           date: filteredDate || date,
           priority: priority || '0',
-          userId: '1'
+          userId: currentUser.uid
         })
         .then(() => {
           setTask('');

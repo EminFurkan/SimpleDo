@@ -10,11 +10,20 @@ import {
   useSelectedProjectValue
 } from './selected-project-context';
 
+import {
+  AuthContext,
+  AuthProvider,
+  useAuthValue
+} from './auth-context';
+
 export {
   ProjectsContext,
   ProjectsProvider,
   useProjectsValue,
   SelectedProjectContext,
   SelectedProjectProvider,
-  useSelectedProjectValue
+  useSelectedProjectValue,
+  AuthContext,
+  AuthProvider,
+  useAuthValue
 };

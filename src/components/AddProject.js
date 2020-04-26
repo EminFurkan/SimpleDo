@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { firebase } from '../firebase';
 import { generatePushId } from '../utils';
 import { useProjectsValue } from '../context';
+import { useAuthValue } from '../context';
 
 export const AddProject = () => {
   const [displayInput, setDisplayInput] = useState(false);
   const [projectName, setProjectName] = useState('');
   const { projects, setProjects } = useProjectsValue();
   const projectId = generatePushId();
+  const { currentUser } = useAuthValue();
 
   const addNewProject = () => {
     projectName &&
@@ -17,7 +19,7 @@ export const AddProject = () => {
         .add({
           projectId,
           name: projectName,
-          userId: '1'
+          userId: 'Z0VotxJuCwNnYWOyMEyUX8aIrVp1'
         })
         .then(() => {
           setProjects([...projects]);

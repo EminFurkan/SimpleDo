@@ -2,6 +2,7 @@ import React from 'react';
 import { GoPlus, GoSync } from 'react-icons/go';
 import { FaBars } from 'react-icons/fa';
 import { IoMdPower } from 'react-icons/io';
+import { firebase } from '../../firebase';
 
 
 export const Header = ({
@@ -38,6 +39,7 @@ export const Header = ({
             </li>
             <li
               className="actions__signout"
+              onClick={() => firebase.auth().signOut()}
             >
               <button>
                 <IoMdPower />

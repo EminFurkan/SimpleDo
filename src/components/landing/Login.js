@@ -1,11 +1,22 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link, Redirect } from 'react-router-dom';
+import { firebase } from '../../firebase';
 
 export const Login = () => {
-  const [user, setUser] = useState({});
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const { email, password } = e.target.elements;
 
-  const onSubmit = () => {
-    console.log('login');
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email.value, password.value)
+      .then(() => {
+        console.log('you have logged in');
+        return <Redirect to="/app" />;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -22,9 +33,9 @@ export const Login = () => {
         </div>
         <form onSubmit={onSubmit}>
           <label>Email</label>
-          <input type="email" name="email" />
+          <input type="email" name="email" autoComplete="on" />
           <label>Password</label>
-          <input type="password" name="password" />
+          <input type="password" name="password" autoComplete="on" />
           <button>Log in</button>
           <span className="checkbox">
             <input type="checkbox" />
