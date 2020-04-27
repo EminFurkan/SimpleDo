@@ -2,7 +2,7 @@
 Simple to-do list app based on [todoist](https://todoist.com/) built with React and Firebase
 
 ## Usage
-npm install
+npm install <br />
 npm start (runs it on http://localhost:3000/)
 
 ## Screenshots
