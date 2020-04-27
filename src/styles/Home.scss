@@ -571,6 +571,33 @@ header {
     }
   }
 
+  .error-message {
+    display: flex;
+    color: #db4c3f;
+    justify-content: center;
+    align-items: center;
+    animation: headShake .1s linear 0s 4 alternate;
+    position: absolute;
+    top: 65%;
+    left: 41%;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    p {
+      padding-top: .1rem;
+      padding-left: .5rem;
+      font-size: 14px;
+    }
+
+    @keyframes headShake {
+      from { left: 40.7%; }
+      to { left: 41.3%; }
+    }
+  }
+
   footer {
     border-top: 1px solid #ddd;
     width: 100%;

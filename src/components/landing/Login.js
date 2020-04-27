@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { firebase } from '../../firebase';
 import { useAuthValue } from '../../context';
+import { MdError } from 'react-icons/md';
 
 export const Login = () => {
   const { currentUser } = useAuthValue();
+  const [displayError, setDisplayError] = useState(false);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -14,12 +16,12 @@ export const Login = () => {
       .auth()
       .signInWithEmailAndPassword(email.value, password.value)
       .catch((err) => {
-        console.log(err);
+        setDisplayError(true);
       });
   };
 
-  if (currentUser){
-    return <Redirect to="/app" />
+  if (currentUser) {
+    return <Redirect to="/app" />;
   }
 
   return (
@@ -45,6 +47,11 @@ export const Login = () => {
             <p>Keep me logged in?</p>
           </span>
         </form>
+        {displayError && (
+          <span className="error-message">
+            <MdError /> <p>Whoops. Invalid Email or Password.</p>
+          </span>
+        )}
         <footer>
           <p>
             Don't have an account? &nbsp;

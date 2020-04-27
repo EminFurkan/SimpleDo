@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { firebase } from '../../firebase';
+import { MdError } from 'react-icons/md';
 
 export const Register = ({ history }) => {
+  const [displayError, setDisplayError] = useState(false);
+
   const onSubmit = (e) => {
     e.preventDefault();
     const { email, password, name } = e.target.elements;
@@ -20,7 +23,7 @@ export const Register = ({ history }) => {
         history.push('/users/showLogin');
       })
       .catch((err) => {
-        console.log(err);
+        setDisplayError(true);
       });
   };
 
@@ -45,6 +48,11 @@ export const Register = ({ history }) => {
           <input type="password" name="password" autoComplete="on" />
           <button>Sign up with Email</button>
         </form>
+        {displayError && (
+          <span className="error-message" style={{ top: '68%' }}>
+            <MdError /> <p>Whoops. Something went wrong.</p>
+          </span>
+        )}
         <footer>
           <p>
             Already signed up? &nbsp;
