@@ -463,7 +463,7 @@ header {
       border-radius: 6px;
       margin-left: 5rem;
       cursor: pointer;
-      animation: glow 2s linear 0s infinite forwards;
+      animation: glow 1s linear 0s infinite alternate;
       transition: .4s ease-out;
     }
 
