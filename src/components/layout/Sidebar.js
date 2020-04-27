@@ -17,7 +17,7 @@ export const Sidebar = ({ displaySidebar, setDisplaySidebar }) => {
   return (
     <div className={displaySidebar ? 'sidebar' : 'sidebar display-off'}>
       <ul className="sidebar__generic">
-        <li className="inbox active">
+        <li className={active === 'inbox' ? 'active' : undefined}>
           <div
             onClick={() => {
               setActive('inbox');
@@ -30,7 +30,7 @@ export const Sidebar = ({ displaySidebar, setDisplaySidebar }) => {
             <span>Inbox</span>
           </div>
         </li>
-        <li className="today">
+        <li className={active === 'today' ? 'active' : undefined}>
           <div
             onClick={() => {
               setActive('today');
@@ -43,7 +43,7 @@ export const Sidebar = ({ displaySidebar, setDisplaySidebar }) => {
             <span>Today</span>
           </div>
         </li>
-        <li className="next_7">
+        <li className={active === 'next_7' ? 'active' : undefined}>
           <div
             onClick={() => {
               setActive('next_7');
