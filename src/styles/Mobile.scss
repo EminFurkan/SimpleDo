@@ -1,0 +1,157 @@
+@media (max-width: 900px) {
+
+  header {
+    height: 8rem;
+
+    nav {
+      height: 8rem;
+      font-size: 38px;
+      max-width: 90%;
+
+      .landing-logo {
+
+        h2 {
+          padding-bottom: .1rem;
+        }
+
+        img {
+          width: 48px;
+          height: 48px;
+        }
+      }
+      div {
+        &.landing-actions {
+          ul {
+
+            li {
+              width: 10rem;
+              height: 8rem;
+              button {
+                font-size: 2.5rem;
+                width: 10rem;
+                height: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .main-content {
+    width: 85rem;
+    flex-direction: column;
+    &__text{
+      width: auto;
+      padding-top: 15rem;
+
+      h2 {
+        font-size: 6rem;
+      }
+
+      .dynamic-do {
+        left: 66%;
+        top: 24rem;
+        font-size: 6rem;
+      }
+      .dynamic-simple{
+        left: 35%;
+        top: 24rem;
+        font-size: 6rem;
+      }
+
+      button {
+        width: 200px;
+        height: 4rem;
+        font-size: 2rem;
+        left: 13rem
+      }
+
+      @keyframes slide {
+        from { top: 35rem; background-color: transparent; }
+        to { top: 31rem; background-color: #1da1f2; }
+      }
+    }
+
+    &__image {
+      height: 48rem;
+      div {
+        top: 40%;
+        left: 60%;
+
+        .phone {
+          height: 64rem;
+        }
+
+        .showcase-small {
+          height: 60rem;
+          margin-top: 10%;
+          margin-left: 7.5%;
+          box-shadow: 0px 0px 35px 10px rgba(29, 160, 242, .8);
+        }
+      }
+    }
+  }
+
+  .showcase {
+    width: 85rem;
+    height: calc(200vh);
+    div {
+
+      img {
+        opacity: 1;
+        scroll-behavior: none;
+        top: -15rem;
+        left: 0;
+        width: 150rem;
+      }
+    }
+    &__text {
+      left: 2%;
+      width: 50rem;
+    }
+  }
+
+  .lights-out {
+    display: none;
+  }
+  .album {
+    display: none;
+    &__container {
+      display: none;
+    }
+  }
+  .outro {
+    display: none;
+  }
+
+  .register {
+
+    &__container {
+      width: 90%;
+    }
+    button {
+      width: 305px !important;
+    }
+    .error-message {
+      left: 21%;
+      margin-top: .4rem;
+      @keyframes headShake {
+        from {  left: 20.7% }
+        to {  left: 21.3% }
+      }
+    }
+  }
+}
+
+
+
+//app
+
+// @media (max-width: 900px){
+//   .sidebar {
+//     width: 50rem;
+//     z-index: 20;
+
+//   }
+// }

@@ -86,7 +86,6 @@ header {
       }
 
       img {
-        fill: red;
         width: 28px;
         height: 28px;
       }
@@ -157,6 +156,7 @@ header {
     padding-left: 4rem;
     position: absolute;
     padding-top: 10rem;
+    left: 5rem;
 
     h2 {
       @include no-select();
@@ -234,7 +234,7 @@ header {
       width: 18rem;
       position: absolute;
       top: 15%;
-      left: 60%;
+      left: 65%;
 
       .phone {
         width: auto;

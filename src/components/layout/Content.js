@@ -6,8 +6,9 @@ export const Content = ({ displaySidebar, setDisplaySidebar, darkMode }) => (
   <section className="content">
     <Sidebar
       displaySidebar={displaySidebar}
-      setDisplaySidebar={setDisplaySidebar}
     />
-    <Tasks darkMode={darkMode} />
+    <Tasks darkMode={darkMode}
+      displaySidebar={displaySidebar}
+     />
   </section>
 );

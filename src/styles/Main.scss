@@ -216,6 +216,7 @@ $generic-bg: #1da1f2;
   width: 100%;
   height: 3rem;
   transition: .4s ease-out;
+  z-index: 500;
   
   @include mq('900px'){
     padding: 0 10px;
@@ -269,7 +270,7 @@ $generic-bg: #1da1f2;
           list-style-type: none;
 
           li {
-            margin-right: 1rem;
+            margin-left: 1rem;
             cursor: pointer;
             width: 2rem;
             height: 2rem;
@@ -301,36 +302,27 @@ $generic-bg: #1da1f2;
 }
 
 .display-off {
-  width: 0rem !important;
-  padding-left: 0 !important;
-  .sidebar__generic {
-    display: none;
-  }
-  .sidebar__project {
-    display: none;
-  }
-  .sidebar__middle {
-    display: none;
-  }
-  .add-project {
-    display: none;
-  }
+  left: -320px !important;
 }
 
 //Sidebar
 .sidebar {
   @include no-select();
-  width: 24rem;
+  position: fixed;
+  left:0;
+  width: 20rem;
   padding-left: 2.5rem;
   height: calc(100vh);
   padding-top: 5%;
   border-right: $generic-border;
   overflow-x: hidden;
   overflow-y: hidden;
-  transition: width .25s cubic-bezier(.4,0,.2,1);
+  transition: left .25s cubic-bezier(.4,0,.2,1);
+  z-index: 100;
+  background-color: #fbfbfb;
 
   @include mq('900px') {
-    display: none;
+    padding-top: 15%;
   }
 
 
@@ -390,9 +382,13 @@ $generic-bg: #1da1f2;
       color: #0000008a;
       margin-right: 1rem;
       transform: rotate(0);
+
+      // svg {
+      //   transition: .2s ease-out;
+      // }
       
       svg.hide-projects {
-        transition: .2s ease-out;
+        transition: transform .2s ease-out;
         transform: rotate(-90deg);
       }
     }
@@ -648,6 +644,7 @@ $generic-bg: #1da1f2;
 
 .tasks {
   width: 100%;
+  margin-left: 320px;
   min-height: calc(100vh);
   padding: 5%;
   background-color: white;
@@ -656,6 +653,7 @@ $generic-bg: #1da1f2;
   color: #333;
   display: flex;
   justify-content: center;
+  transition: margin .25s cubic-bezier(.4,0,.2,1);
 
   @include mq('900px') {
     padding-top: 15%;

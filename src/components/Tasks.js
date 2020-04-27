@@ -6,7 +6,7 @@ import { getTitle, getFilteredTitle, filteredTasksExist } from '../utils';
 import { useSelectedProjectValue, useProjectsValue } from '../context';
 import { AddTask } from './AddTask';
 
-export const Tasks = ({ darkMode }) => {
+export const Tasks = ({ darkMode, displaySidebar }) => {
   const { selectedProject } = useSelectedProjectValue();
   const { projects } = useProjectsValue();
   const { tasks } = useTasks(selectedProject);
@@ -31,7 +31,10 @@ export const Tasks = ({ darkMode }) => {
   });
 
   return (
-    <div className="tasks">
+    <div
+      className="tasks"
+      style={!displaySidebar ? { marginLeft: 0 } : { marginLeft: '320px' }}
+    >
       <div className="tasks__container">
         <h2>{projectName}</h2>
         <ul className="tasks__list">
