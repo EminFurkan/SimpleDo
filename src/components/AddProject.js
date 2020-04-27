@@ -19,7 +19,7 @@ export const AddProject = () => {
         .add({
           projectId,
           name: projectName,
-          userId: 'Z0VotxJuCwNnYWOyMEyUX8aIrVp1'
+          userId: currentUser.uid
         })
         .then(() => {
           setProjects([...projects]);
