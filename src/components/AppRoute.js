@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { useAuthValue } from '../context';
 
-export const RouteManager = ({ component: RouteComponent, ...rest }) => {
+export const AppRoute = ({ component: RouteComponent, ...rest }) => {
   const { currentUser } = useAuthValue();
 
   return (
