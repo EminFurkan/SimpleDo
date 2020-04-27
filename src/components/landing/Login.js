@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { firebase } from '../../firebase';
+import { useAuthValue } from '../../context';
 
 export const Login = () => {
+  const { currentUser } = useAuthValue();
+
   const onSubmit = (e) => {
     e.preventDefault();
     const { email, password } = e.target.elements;
@@ -10,14 +13,14 @@ export const Login = () => {
     firebase
       .auth()
       .signInWithEmailAndPassword(email.value, password.value)
-      .then(() => {
-        console.log('you have logged in');
-        return <Redirect to="/app" />;
-      })
       .catch((err) => {
         console.log(err);
       });
   };
+
+  if (currentUser){
+    return <Redirect to="/app" />
+  }
 
   return (
     <div className="register">

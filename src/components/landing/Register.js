@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { firebase } from '../../firebase';
 
-export const Register = () => {
+export const Register = ({ history }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     const { email, password, name } = e.target.elements;
@@ -17,8 +17,7 @@ export const Register = () => {
           email: email.value,
           password: password.value
         });
-        console.log('Success')
-        return <Redirect to="users/showLogin" />;
+        history.push('/users/showLogin');
       })
       .catch((err) => {
         console.log(err);

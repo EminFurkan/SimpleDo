@@ -9,15 +9,15 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 export const App = () => {
   return (
-    <AuthProvider>
-      <Router>
-        <Switch>
-          <Route path="/" exact component={Home} />
+    <Router>
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <AuthProvider>
           <Route path="/app" component={Main} />
           <Route path="/users/showRegister" component={Register} />
           <Route path="/users/showLogin" component={Login} />
-        </Switch>
-      </Router>
-    </AuthProvider>
+        </AuthProvider>
+      </Switch>
+    </Router>
   );
 };
