@@ -1,3 +1,5 @@
+try live demo [here](https://simpledo.now.sh/)
+
 ## Definition
 Simple to-do list app based on [todoist](https://todoist.com/) built with React and Firebase
 
