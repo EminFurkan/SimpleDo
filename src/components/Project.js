@@ -44,27 +44,24 @@ export const Project = () => {
         >
           <FaTrashAlt className="sidebar__icon" />
           {displayConfirm && (
-            <div className="project-delete-modal">
-              <div className="project-delete-modal__inner">
-                <p>
-                  Are you sure you want to delete:
-                  <span className="name">&nbsp;{project.name}</span>
-                </p>
-                <div className="project-delete-modal__actions">
+            <div className="delete-project">
+              <div className="delete-project__modal">
+                <span className="delete-project__modal-text">
+                  <p>
+                    Are you sure you want to delete: <span>{project.name}</span>
+                  </p>
+                </span>
+                <span className="delete-project__modal-actions">
                   <button
-                    className="project-delete-modal__actions-delete"
-                    type="button"
-                    onClick={() => deleteProject(project.docId)}
+                    onClick={() => {
+                      deleteProject(project.docId);
+                      setDisplayConfirm(false);
+                    }}
                   >
                     Delete
                   </button>
-                  <span
-                    className="project-delete-modal__actions-cancel"
-                    onClick={() => setDisplayConfirm(!displayConfirm)}
-                  >
-                    Cancel
-                  </span>
-                </div>
+                  <span onClick={() => setDisplayConfirm(false)}>Cancel</span>
+                </span>
               </div>
             </div>
           )}

@@ -15,6 +15,7 @@ export const SelectProject = ({
         <ul className="select-project__list">
           {projects.map((project) => (
             <li
+              key={project.projectId}
               onClick={() => {
                 setProject(project.projectId);
                 setDisplayProjectMenu(false);

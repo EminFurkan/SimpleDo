@@ -197,11 +197,11 @@ $generic-bg: #1da1f2;
     }
   }
 
-  .project-delete-modal {
-    background-color: #282828;
-    box-shadow: 0 10px 20px rgba(0,0,0,.19), 0 6px 6px rgba(0,0,0,.23);
-    color: rgba(255, 255, 255, 0.87);
-  }
+  // .project-delete-modal {
+  //   background-color: #282828;
+  //   box-shadow: 0 10px 20px rgba(0,0,0,.19), 0 6px 6px rgba(0,0,0,.23);
+  //   color: rgba(255, 255, 255, 0.87);
+  // }
 }
 
 //Header
@@ -498,52 +498,65 @@ $generic-bg: #1da1f2;
 }
 
 //Show Delete Modal
-.project-delete-modal {
-  width: 20rem;
-  height: 10rem;
-  position: absolute;
-  line-height: 1.5;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  background-color: white;
-  top: 30%;
-  left: 40%;
-  border-radius: 5px;
-  padding: 1.5rem 1rem;
+.delete-project {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.4);
+  left: 0;
+  top: 0;
+  cursor: default;
 
-  &__inner {
-    height: 100%;
-    width: 100%;
-    font-weight: 300;
+  &__modal {
+    background-color: whitesmoke;
+    margin: auto;
+    margin-top: 15rem;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,.16);;
+    width: 400px;
+    height: 200px;
+    left: 50%;
+    top: 50%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
     flex-direction: column;
+    border-radius: 5px;
 
-    .name {
-      font-weight: 700;
-    }
-  }
+    &-text {
+      padding: 1rem;
+      height: 60%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-  &__actions {
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    height: 30%;
-    align-items: center;
-
-    &-delete {
-      @include button(50px);
-    }
-
-    &-cancel {
-      @include cancel();
-    }
-    &-cancel:hover{
-      text-decoration: underline;
+      p {
+        font-weight: 400;
+      }
+      span {
+        font-weight: 700;
+      }
     }
 
-    span {
-      margin: 0 .5rem;
+    &-actions {
+      height: 40%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      button {
+        @include button(60px);
+        margin-left: auto;
+        margin-right: .5rem;
+      }
+
+      span {
+        @include cancel();
+        font-weight: 400;
+        margin-right: 2rem;
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
   }
 }
