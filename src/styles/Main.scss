@@ -102,6 +102,18 @@ $generic-bg: #1da1f2;
     // background-color: #3d3d3d;
     background-color: #282828;
     border-color: transparent;
+
+    .quick-add-task__overlay {
+      &-modal {
+        background-color: #282828;
+        color: hsla(0,0%,100%,.87);
+        input {
+          color: hsla(0,0%,100%,.87);
+          background-color: #1b1b1b;
+          border-color: hsla(0,0%,100%,.1);
+        }
+      }
+    }
   }
   .sidebar {
     background-color: #282828;
@@ -300,6 +312,61 @@ $generic-bg: #1da1f2;
               width: 1.3rem;
             }
           }
+        }
+      }
+    }
+  }
+  .quick-add-task__overlay {
+    width: 100%;
+    height: calc(100vh);
+    position: fixed;
+    background-color: rgba(0,0,0,.4);
+    left: 0;
+    
+    &-modal {
+
+      @include mq(900px){
+        width: 350px;
+      }
+
+      background-color: white;
+      box-shadow: 0 2px 8px 0 rgba(0,0,0,.16);
+      width: 480px;
+      border-radius: 5px;
+      margin: 10vh auto;
+      height: 10rem;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      padding: 1rem;
+      &-text {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        span {
+          &:hover {
+            cursor: pointer;
+            color: darken($color: hsla(0,0%,100%,.87), $amount: 50%);
+          }
+        }
+      }
+      input {
+        height: 2.5rem;
+        padding-left: .5rem;
+        outline: none;
+        border-radius: 3px;
+        border: 1px solid #ddd;
+        margin: 1rem 0 .5rem 0;
+        font-size: 15px;
+      }
+      &-actions {
+        display: flex;
+        justify-content: flex-start;
+        height: 30%;
+        align-items: center;
+
+        button {
+          @include button(100px);
         }
       }
     }
@@ -513,10 +580,13 @@ $generic-bg: #1da1f2;
   cursor: default;
 
   &__modal {
+    @include mq(900px){
+      width: 350px;
+    }
+
     background-color: #fff;
-    margin: auto;
-    margin-top: 15rem;
-    box-shadow: 0 2px 8px 0 rgba(0,0,0,.16);;
+    margin: 20vh auto;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,.16);
     width: 400px;
     height: 200px;
     left: 50%;

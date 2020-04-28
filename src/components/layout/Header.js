@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { GoPlus, GoSync } from 'react-icons/go';
 import { FaBars } from 'react-icons/fa';
 import { IoMdPower } from 'react-icons/io';
 import { firebase } from '../../firebase';
-
+import { QuickAddTask } from '../QuickAddTask';
 
 export const Header = ({
   displaySidebar,
@@ -11,6 +11,8 @@ export const Header = ({
   darkMode,
   setDarkMode
 }) => {
+  const [displayQuickAdd, setDisplayQuickAdd] = useState(false);
+
   return (
     <header className="header">
       <nav>
@@ -24,7 +26,10 @@ export const Header = ({
         </div>
         <div className="actions">
           <ul>
-            <li className="actions__add">
+            <li
+              className="actions__add"
+              onClick={() => setDisplayQuickAdd(!displayQuickAdd)}
+            >
               <button>
                 <GoPlus />
               </button>
@@ -48,6 +53,9 @@ export const Header = ({
           </ul>
         </div>
       </nav>
+      {displayQuickAdd && (
+        <QuickAddTask setDisplayQuickAdd={setDisplayQuickAdd} />
+      )}
     </header>
   );
 };
