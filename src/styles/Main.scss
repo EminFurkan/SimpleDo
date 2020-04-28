@@ -924,6 +924,10 @@ $generic-bg: #1da1f2;
   &__select-date {
     @include popup();
     left: 82%;
+
+    @include mq(900px){
+      left: 40%;
+    }
     
     li {
       font-weight: 500 !important;
@@ -967,6 +971,10 @@ $generic-bg: #1da1f2;
     @include popup();
     left: 80%;
 
+    @include mq(900px){
+      left: 40%;
+    }
+
     li {
       font-weight: 500 !important;
       font-size: 13px !important;
@@ -987,6 +995,10 @@ $generic-bg: #1da1f2;
   &__select-priority {
     @include popup();
     left: 84%;
+
+    @include mq(900px){
+      left: 40%;
+    }
 
     li {
       font-weight: 500 !important;

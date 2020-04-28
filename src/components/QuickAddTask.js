@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import moment from 'moment';
+// import moment from 'moment';
 import { firebase } from '../firebase';
 import { MdClose } from 'react-icons/md';
 import { useSelectedProjectValue, useAuthValue } from '../context';
@@ -41,11 +41,13 @@ export const QuickAddTask = ({ setDisplayQuickAdd }) => {
   };
 
   return (
-    <div className="quick-add-task__overlay"
+    <div
+      className="quick-add-task__overlay"
       onClick={() => setDisplayQuickAdd(false)}
     >
-      <div className="quick-add-task__overlay-modal"
-        onClick={e => e.stopPropagation()}
+      <div
+        className="quick-add-task__overlay-modal"
+        onClick={(e) => e.stopPropagation()}
       >
         <span className="quick-add-task__overlay-modal-text">
           <p>Quick Add Task</p>
