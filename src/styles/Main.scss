@@ -508,7 +508,7 @@ $generic-bg: #1da1f2;
   cursor: default;
 
   &__modal {
-    background-color: whitesmoke;
+    background-color: #fff;
     margin: auto;
     margin-top: 15rem;
     box-shadow: 0 2px 8px 0 rgba(0,0,0,.16);;
@@ -523,7 +523,7 @@ $generic-bg: #1da1f2;
 
     &-text {
       padding: 1rem;
-      height: 60%;
+      height: 70%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -537,7 +537,8 @@ $generic-bg: #1da1f2;
     }
 
     &-actions {
-      height: 40%;
+      border-top: 1px solid #ddd;
+      height: 30%;
       display: flex;
       justify-content: center;
       align-items: center;
