@@ -155,6 +155,17 @@ $generic-bg: #1da1f2;
     background-color: #1E1E1E;
     border-color: transparent;
     color: rgba(255, 255, 255, 0.87);
+
+    .show-completed{
+      background-color: #1e1e1e;
+      border-color: rgba(255, 255, 255, 0.1);
+      &:hover {
+        background-color: #363636;
+      }
+      .pointer {
+        border-color: rgba(255, 255, 255, 0.1);
+      }
+    }
     input {
       color: hsla(0,0%,100%,.87);
       background-color: #171717;
@@ -748,6 +759,66 @@ $generic-bg: #1da1f2;
     padding-top: 15%;
   }
 
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    span {
+      cursor: pointer;
+      position: relative;
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      .show-completed {
+        position: absolute;
+        left: -200px;
+        top: 30px;
+        border: 1px solid #ddd;
+        display: flex;
+        align-items: center;
+        border-radius: 3px;
+        font-weight: 500 !important;
+        font-size: 13px !important;
+        padding: 0 .5rem;
+        cursor: pointer;
+        height: 2rem;
+        width: 15rem;
+        background-color: #fff;
+        z-index: 200;
+
+        &:hover {
+          background-color: #f3f3f3;
+        }
+        .pointer {
+          width: 10px;
+          height: 10px;
+          background-color: inherit;
+          position: absolute;
+          transform: rotate(45deg);
+          left: 204px;
+          top: -6px;
+          // z-index: 100;
+          border-top: 1px solid #ddd;
+          border-left: 1px solid #ddd;
+        }
+        span {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+
+
+          svg {
+            margin-right: 1rem;
+          }
+        }
+      }
+    }
+  }
+
   h2 {
     font-size: 20px;
     padding-top: .5rem;
@@ -775,6 +846,18 @@ $generic-bg: #1da1f2;
       .checkbox__0 {
         @include checkbox();
 
+        &.completed {
+          background-color: grey;
+          svg {
+            color: #fff;
+          }
+          &:hover {
+            background-color: grey;
+            svg{
+              color: #fff;
+            }
+          }
+        }
         svg {
           height: 12px;
           width: 12px;
@@ -794,11 +877,25 @@ $generic-bg: #1da1f2;
         border-color: #d1453b;
         border-width: 2px;
         background-color: rgba(209,69,59,.1);
+        
         svg {
           height: 12px;
           width: 12px;
           color: transparent;
         }
+        &.completed {
+          background-color: #d1453b;
+          svg {
+            color: #fff;
+          }
+          &:hover {
+            background-color: #d1453b;
+            svg{
+              color: #fff;
+            }
+          }
+        }
+
         &:hover {
           background-color: rgba(209,69,59,.1);
           svg {
@@ -816,6 +913,19 @@ $generic-bg: #1da1f2;
           width: 12px;
           color: transparent;
         }
+        &.completed {
+          background-color: #eb8909;
+          svg {
+            color: #fff;
+          }
+          &:hover {
+            background-color: #eb8909;
+            svg{
+              color: #fff;
+            }
+          }
+        }
+        
         &:hover {
           background-color: rgba(235,137,9,.1);
           svg {
@@ -832,6 +942,18 @@ $generic-bg: #1da1f2;
           height: 12px;
           width: 12px;
           color: transparent;
+        }
+        &.completed {
+          background-color: #246fe0;
+          svg {
+            color: #fff;
+          }
+          &:hover {
+            background-color: #246fe0;
+            svg{
+              color: #fff;
+            }
+          }
         }
         &:hover {
           background-color: rgba(36,111,224,.1);

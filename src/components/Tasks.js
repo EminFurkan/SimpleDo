@@ -1,15 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTasks } from '../hooks';
 import { filteredTasks } from '../constants';
 import { Checkbox } from './Checkbox';
 import { getTitle, getFilteredTitle, filteredTasksExist } from '../utils';
 import { useSelectedProjectValue, useProjectsValue } from '../context';
 import { AddTask } from './AddTask';
+import { AiOutlineSetting } from 'react-icons/ai';
+import { IoIosCheckmarkCircleOutline } from 'react-icons/io';
 
 export const Tasks = ({ darkMode, displaySidebar }) => {
   const { selectedProject } = useSelectedProjectValue();
   const { projects } = useProjectsValue();
-  const { tasks } = useTasks(selectedProject);
+  const { tasks, archivedTasks } = useTasks(selectedProject);
+  const [displaySettings, setDisplaySettings] = useState(false);
+  const [displayArchivedTasks, setDisplayArchivedTasks] = useState(false);
 
   let projectName = '';
 
@@ -36,7 +40,26 @@ export const Tasks = ({ darkMode, displaySidebar }) => {
       style={!displaySidebar ? { marginLeft: 0 } : { marginLeft: '320px' }}
     >
       <div className="tasks__container">
-        <h2>{projectName}</h2>
+        <div className="tasks__title">
+          <h2>{projectName}</h2>
+          {projectName === 'Inbox' && (
+            <span onClick={() => setDisplaySettings(!displaySettings)}>
+              <AiOutlineSetting />
+              {displaySettings && (
+                <div
+                  className="show-completed"
+                  onClick={() => setDisplayArchivedTasks(!displayArchivedTasks)}
+                >
+                  <span className="pointer"></span>
+                  <span>
+                    <IoIosCheckmarkCircleOutline />
+                    <p>Show completed tasks</p>
+                  </span>
+                </div>
+              )}
+            </span>
+          )}
+        </div>
         <ul className="tasks__list">
           {tasks.map((task) => (
             <li key={`${task.id}`}>
@@ -44,6 +67,21 @@ export const Tasks = ({ darkMode, displaySidebar }) => {
               <span>{task.task}</span>
             </li>
           ))}
+          {displayArchivedTasks &&
+            archivedTasks.map((archivedTask) => (
+              <li
+                key={archivedTask.id}
+                priority={archivedTask.priority}
+                style={{ opacity: '.4', textDecoration: 'line-through' }}
+              >
+                <Checkbox
+                  id={archivedTask.id}
+                  priority={archivedTask.priority}
+                  completed={'completed'}
+                />
+                <span>{archivedTask.task}</span>
+              </li>
+            ))}
           <AddTask />
           {tasks.length === 0 ? (
             <div className="empty-state-illustration">
