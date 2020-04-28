@@ -41,8 +41,12 @@ export const QuickAddTask = ({ setDisplayQuickAdd }) => {
   };
 
   return (
-    <div className="quick-add-task__overlay">
-      <div className="quick-add-task__overlay-modal">
+    <div className="quick-add-task__overlay"
+      onClick={() => setDisplayQuickAdd(false)}
+    >
+      <div className="quick-add-task__overlay-modal"
+        onClick={e => e.stopPropagation()}
+      >
         <span className="quick-add-task__overlay-modal-text">
           <p>Quick Add Task</p>
           <span onClick={() => setDisplayQuickAdd(false)}>
