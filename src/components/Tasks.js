@@ -68,6 +68,7 @@ export const Tasks = ({ darkMode, displaySidebar }) => {
             </li>
           ))}
           {displayArchivedTasks &&
+            projectName === 'Inbox' &&
             archivedTasks.map((archivedTask) => (
               <li
                 key={archivedTask.id}
@@ -83,7 +84,7 @@ export const Tasks = ({ darkMode, displaySidebar }) => {
               </li>
             ))}
           <AddTask />
-          {tasks.length === 0 ? (
+          {tasks.length === 0 || archivedTasks.length === 0 ? (
             <div className="empty-state-illustration">
               <img
                 src={
