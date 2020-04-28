@@ -994,7 +994,7 @@ $generic-bg: #1da1f2;
   //Select Priority
   &__select-priority {
     @include popup();
-    left: 84%;
+    left: 83%;
 
     @include mq(900px){
       left: 40%;
