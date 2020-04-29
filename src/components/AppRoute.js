@@ -12,7 +12,7 @@ export const AppRoute = ({ component: RouteComponent, ...rest }) => {
         !!currentUser ? (
           <RouteComponent {...routeProps} />
         ) : (
-          <Redirect to='users/showLogin'/>
+          <Redirect to="users/showLogin" />
         )
       }
     />
