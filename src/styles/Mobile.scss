@@ -1,81 +1,81 @@
-@media (max-width: 900px) {
+// @media (max-width: 900px) {
 
-  header {
-    height: 8rem;
+//   header {
+//     height: 8rem;
 
-    nav {
-      height: 8rem;
-      font-size: 38px;
-      max-width: 90%;
+//     nav {
+//       height: 8rem;
+//       font-size: 38px;
+//       max-width: 90%;
 
-      .landing-logo {
+//       .landing-logo {
 
-        h2 {
-          padding-bottom: .1rem;
-        }
+//         h2 {
+//           padding-bottom: .1rem;
+//         }
 
-        img {
-          width: 48px;
-          height: 48px;
-        }
-      }
-      div {
-        &.landing-actions {
-          ul {
+//         img {
+//           width: 48px;
+//           height: 48px;
+//         }
+//       }
+//       div {
+//         &.landing-actions {
+//           ul {
 
-            li {
-              width: 10rem;
-              height: 8rem;
-              button {
-                font-size: 2.5rem;
-                width: 10rem;
-                height: 100%;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  .main-content {
-    width: 87rem;
-  }
+//             li {
+//               width: 10rem;
+//               height: 8rem;
+//               button {
+//                 font-size: 2.5rem;
+//                 width: 10rem;
+//                 height: 100%;
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+//   .main-content {
+//     width: 87rem;
+//   }
 
-  .showcase {
-    width: 87rem;
-  }
+//   .showcase {
+//     width: 87rem;
+//   }
 
-  .lights-out {
-    width: 87rem;
+//   .lights-out {
+//     width: 87rem;
 
-    span {
-      width: 55rem;
-    }
-  }
+//     span {
+//       width: 55rem;
+//     }
+//   }
   
-  .album {
-    width: 87rem;
-  }
+//   .album {
+//     width: 87rem;
+//   }
 
-  .outro {
-    width: 87rem;
-  }
+//   .outro {
+//     width: 87rem;
+//   }
 
-  .register {
+//   .register {
 
-    &__container {
-      width: 90%;
-    }
-    button {
-      width: 305px !important;
-    }
-    .error-message {
-      left: 21%;
-      margin-top: .4rem;
-      @keyframes headShake {
-        from {  left: 20.7% }
-        to {  left: 21.3% }
-      }
-    }
-  }
-}
+//     &__container {
+//       width: 90%;
+//     }
+//     button {
+//       width: 305px !important;
+//     }
+//     .error-message {
+//       left: 21%;
+//       margin-top: .4rem;
+//       @keyframes headShake {
+//         from {  left: 20.7% }
+//         to {  left: 21.3% }
+//       }
+//     }
+//   }
+// }

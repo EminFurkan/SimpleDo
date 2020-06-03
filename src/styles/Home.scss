@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:200,400,700,900');
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&display=swap');
 
 // General Settings
 html {
@@ -43,6 +43,12 @@ $generic-bg: #1da1f2;
   white-space: nowrap;
   cursor: pointer;
   outline: none;
+  transition: .2s ease-out;
+
+  &:hover {
+    background-color: darken($color: $generic-bg, $amount: 5%);
+    transform: scale(1.1);
+  }
 }
 
 @mixin no-select {
@@ -141,336 +147,164 @@ header {
   }
 }
 
-//Main Content
-.main-content {
-  height: calc(130vh);
+.showcase-introduction {
   display: flex;
-  width: 100%;
-  color: #202020;
+  height: calc(95vh);
   position: relative;
 
-  &__text {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    padding-left: 4rem;
+  .coffee-break {
+    transform: scaleX(-1);
     position: absolute;
-    padding-top: 10rem;
-    left: 5rem;
+    left: 2rem;
+    top: 22rem;
+  }
 
-    h2 {
-      @include no-select();
-      font-weight: 900;
-      font-size: 4rem;
-      margin: 1rem;
-      visibility: hidden;
-    }
+  &__text {
+    font-size: 68px;
+    font-weight: 900;
+    position: relative;
+    top: 8rem;
+    left: 13rem;
+    line-height: 1.2;
+    width: 50rem;
+    height: 20rem;
 
-    .animation-off {
-      animation-play-state: paused;
-      visibility: visible;
-    }
-
-    .heading-top {
-      animation: fade 1s linear 1s 1 forwards;
-    }
-
-    .heading-bottom {
-      animation: fade 1s linear 1.8s 1 forwards;
-    }
-
-    .dynamic-do {
-      font-size: 4rem;
-      font-weight: 900;
-      color: $generic-bg;
-      left: 63%;
-      top: 17rem;
-      transition: .9s ease-out;
+    p:first-of-type {
+      opacity: 0;
       position: absolute;
-    }
+      left: 0rem;
+      top: 5rem;
+      animation: slide1 .8s cubic-bezier(0.68, -0.6, 0.32, 1.6) .5s 1 forwards;
 
-    .dynamic-simple {
-      font-size: 4rem;
-      font-weight: 900;
-      left: 36%;
-      top: 17rem;
+      @keyframes slide1 {
+        from { top: 20rem; opacity: 0; }
+        to { top: 0rem; opacity: 1; }
+      }
+    }
+    p:last-of-type {
+      opacity: 0;
       position: absolute;
-      animation: fade 1s linear 1.8s 1 forwards;
-      visibility: hidden;
-    }
+      top: 15rem;
+      left: 0rem;
+      animation: slide2 .8s cubic-bezier(0.68, -0.6, 0.32, 1.6) 1s 1 forwards;
 
-    @keyframes fade {
-      from { opacity: 0; visibility: hidden; }
-      to { opacity: 1; visibility: visible; }
+      @keyframes slide2 {
+        from { top: 20rem; opacity: 0; }
+        to { top: 6rem; opacity: 1; }
+      }
     }
 
     button {
-      @include button(150px);
-      font-size: 1.125rem;
-      border-radius: .5em;
-      margin-left: 14rem;
-      margin-top: 1rem;
+      @include button(180px);
       position: absolute;
-      top: 65rem;
-      left: 5.5rem;
-      animation: slide .7s linear 2s 1 forwards;
-      background-color: transparent;
-    }
+      font-size: 1.2rem;
+      margin-left: 13rem;
+      top: 12rem;
+      opacity: 0;
+      animation: slide3 .8s cubic-bezier(0.33, 1, 0.68, 1) 1.7s 1 forwards;
 
-    @keyframes slide {
-      from { top: 26rem; background-color: transparent;}
-      to { top: 22rem; background-color: #1da1f2;}
+      @keyframes slide3 {
+        from { left: -100vw; opacity: 0; }
+        to { left: 0rem; opacity: 1; }
+      }
     }
   }
 
   &__image {
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-
-    div {
-      height: 38rem;
-      width: 18rem;
-      position: absolute;
-      top: 15%;
-      left: 65%;
-
-      .phone {
-        width: auto;
-        height: 38rem;
-        position: relative;
-        z-index: 20;
-      }
-      
-      .showcase-small {
-        width: auto;
-        height: 36rem;
-        border-radius: 10px;
-        box-shadow: 0px 0px 25px 4px rgba(29, 160, 242, .8);
-        position: absolute;
-        margin-top:6%;
-        margin-left: 3%;
-        z-index: 10;
-      }
-    }
-  }
-}
-
-.showcase {
-  display: flex;
-  justify-content: center;
-  position: relative;
-  height: calc(400vh);
-
-  div {
-    z-index: -1;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-
-    img {
-      border-radius: 10px;
-      opacity: 0;
-      position: absolute;
-      left: 2%;
-    }
-  }
-  &__text {
     position: absolute;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    left: 5%;
-    top: 12%;
-    opacity: 0;
+    top: 7rem;
+    left: 57rem;
+    background-color: pink;
 
-    h2 {
-      @include no-select();
-      font-weight: 900;
-      font-size: 4rem;
-      margin: 1rem;
+    img:first-of-type {
+      position: fixed;
+      top: 15.5%;
+      left: 63.8%;
+      max-width: 20rem;
+      max-height: 38.2rem;
+      z-index: 2;
     }
-    p {
-      font-size: 2rem;
-      font-weight: 900;
-      margin: .5rem;
+    img:last-of-type {
+      position: fixed;
+      top: 18%;
+      left: 64.5%;
+      max-height: 36rem;
+      max-width: 18rem;
+      box-shadow: 0 0 25px 4px rgba(29,160,242,.8);
+      border-radius: 20px;
     }
   }
 }
 
-.lights-out {
-  background-image: linear-gradient(180deg, transparent, #000 50%);
-  height: calc(220vh);
+.showcase-detail {
+  height: calc(91vh);
   display: flex;
   justify-content: center;
-  
-  span {
-    @include no-select();
+  align-items: flex-start;
+  overflow-y: hidden;
+
+  p:first-of-type{
+    font-size: 48px;
     font-weight: 900;
-    font-size: 4rem;
-    margin: 1rem;
-    color: #f5f5f7;
     position: absolute;
-    will-change: transform;
+    left: 20rem;
+    background-image: linear-gradient(
+      75.2deg,
+      rgba(41, 196, 255, 1) -2.5%,
+      rgba(255, 158, 211, 1) 55%,
+      rgba(255, 182, 138, 1) 102.3%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     opacity: 0;
-    top: 5200px;
-    z-index: 300;
-  }
-  
-  .switch{
-    animation: switchcolor .4s linear 0s 1 forwards;
-  }
+    animation: slide5 .8s cubic-bezier(0.68, -0.6, 0.32, 1.6) 0s 1 forwards;
 
-  @keyframes switchcolor {
-    from { color: #f5f5f7; }
-    to { color: #1d1d1f; }
-  }
-}
-
-.album {
-  height: calc(150vh);
-  background-color: #000;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-
-  &__container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
-    img {
-      border: 5px solid #f5f5f7;
-      max-width: 100%;
-      max-height: 100%;
-    }
-    .nav {
-      display: flex;
-      justify-content: center;
-      width: 70%;
-    }
-
-    &-introduction {
-      width: 80%;
-      height: 40%;
-      display: flex;
-      justify-content: space-evenly;
-      align-items: center;
-
-      .date-priority {
-        img:first-of-type {
-          border-bottom: none;
-        }
-        img:last-of-type {
-          border-top: none;
-        }
-      }
-
-      div {
-        margin: 1rem;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        width: 20rem;
-        text-align: center;
-        img {
-          width: 325px;
-        }
-
-        p {
-          margin-bottom: 1rem;
-          font-size: 28px;
-          color: #f5f5f7;
-          font-weight: 600;
-        }
-      }
+    @keyframes slide5 {
+      from { top: 83rem; opacity: 0; }
+      to { top: 68rem; opacity: 1; }
     }
   }
-}
 
-.outro {
-  width: 100%;
-  height: calc(94vh);
-  position: relative;
-  display: flex;
-  background-color: #000;
-  @include no-select();
-
-  .logo {
-    top: 27%;
-    left: 20%;
+  ul {
     position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    list-style-type: none;
+    left: 25rem;
+    animation: slide6 .8s cubic-bezier(0.68, -0.6, 0.32, 1.6) .5s 1 forwards;
+    opacity: 0;
 
-    h2 {
-      font-weight: 700;
-      font-size: 13px;
-      color: $generic-bg;
+    @keyframes slide6 {
+      from { top: 83rem; opacity: 0; }
+      to { top: 73rem; opacity: 1; }
     }
 
-    img {
-      height: 18px;
-      width: 18px;
+    li {
+      padding: 1rem;
+      font-size: 22px;
+      font-weight: 400;
+      font-family: 'Open Sans', sans-serif;
+      
+      &::before{
+        content: '';
+        position: absolute;
+        margin-top: .15rem;
+        left: -1rem;
+        width: 1.2rem;
+        height: 1.2rem;
+        border-radius: 50%;
+        border: 2px solid #2771E0;
+        background-color: rgba(36,111,224,.1);
+      }
+      &::after{
+        content: '✔';
+        position: absolute;
+        left: -.85rem;
+        color: #333;
+      }
     }
   }
 
   img {
-    max-width: 100%;
-    max-height: 100%;
-    transform: scale(.8);
-    transition: .4s ease-out;
-  }
-  .tablet-content {
-    position: absolute;
-    top: 30%;
-    left: 45%;
-
-    img {
-      width: 150px;
-      height: 300px;
-      z-index: 3;
-      position: relative;
-    }
-    .showcase-tablet {
-      height: 290px;
-      position: absolute;
-      top:4%;
-      left: 3%;
-      z-index: 1;
-    }
-  }
-  .tablet-text {
-    color: #212121;
-    position: absolute;
-    top: 40%;
-    left: 22%;
-
-    p {
-      font-size: 32px;
-      font-weight: 700;
-      margin: .5rem;
-    }
-
-    button {
-      @include button(100px);
-      height: 1.5rem;
-      border-radius: 6px;
-      margin-left: 5rem;
-      cursor: pointer;
-      animation: glow 1s linear 0s infinite alternate;
-      transition: .4s ease-out;
-    }
-
-    @keyframes glow {
-      from { box-shadow: 0; }
-      to { box-shadow: 0px 0px 5px 5px $generic-bg; }
-    }
+    border-radius: 20px;
   }
 }
 
