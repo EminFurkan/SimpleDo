@@ -153,7 +153,7 @@ header {
 
 .showcase-introduction {
   display: flex;
-  height: calc(95vh);
+  height: calc(100vh);
   position: relative;
   
   @media (max-width: 900px) {
@@ -253,7 +253,6 @@ header {
     position: absolute;
     top: 7rem;
     left: 57rem;
-    background-color: pink;
 
     @media (max-width: 900px) {
       display: none;
@@ -261,7 +260,7 @@ header {
 
     img:first-of-type {
       position: fixed;
-      top: 15.5%;
+      top: 15.8%;
       left: 63.8%;
       max-width: 20rem;
       max-height: 38.2rem;
@@ -281,7 +280,7 @@ header {
 
 .showcase-detail {
   @include no-select();
-  height: calc(91vh);
+  height: calc(100vh);
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -310,7 +309,7 @@ header {
 
     @keyframes slide5 {
       from { top: 83rem; opacity: 0; }
-      to { top: 68rem; opacity: 1; }
+      to { top: 73rem; opacity: 1; }
     }
 
     @media (max-width: 900px) {
@@ -333,7 +332,7 @@ header {
 
     @keyframes slide6 {
       from { top: 83rem; opacity: 0; }
-      to { top: 73rem; opacity: 1; }
+      to { top: 77rem; opacity: 1; }
     }
 
     li {
@@ -376,6 +375,9 @@ header {
   }
 
   img {
+    position: absolute;
+    z-index: -1;
+    top: 95%;
     border-radius: 20px;
 
     @media (max-width: 900px) {

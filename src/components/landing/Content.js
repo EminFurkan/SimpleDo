@@ -9,7 +9,7 @@ export const Content = () => {
   const [display, setDisplay] = useState(false);
 
   const handleEvent = () => {
-    if (window.scrollY === 679) {
+    if (window.scrollY === window.innerHeight) {
       setDisplay(true);
     }
   };
